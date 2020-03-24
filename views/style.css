@@ -11,13 +11,20 @@ div.maincontainer {
 div.leftcontainer {
     width: 450px;
     height: 450px;
+    left: 250px;
+    top: 200px;
     background-color: ghostwhite;
     position: absolute;
-}
+    }
 div.rightcontainer {
     width: 450px;
     height: 450px;
-    left: 550px;
+    right: 250px;
+    top: 200px;
     background-color: ghostwhite;
     position: absolute;
+}
+a {
+    top:225px;
+    position: relative;
 }

@@ -1,15 +1,12 @@
-doctype html
-html
-   head
-     style
-       include style.css
-        
-   title = "Lost and Found"
-   body
-         div.maincontainer
-             h1 Lost and Found
-             div.leftcontainer 
-               p I Found Something
-             div.rightcontainer
-               p I Lost Something
+extends ../node_modules/jade-bootstrap/_bootstrap.pug        
+block body
+    style
+        include style.css
+    div.maincontainer
+        h1 Lost and Found
+        div.leftcontainer 
+            a(href=""): button(type="button") I Found Something
+        div.rightcontainer
+            a(href=""): button(type="button") I Lost Something
+             
                     
