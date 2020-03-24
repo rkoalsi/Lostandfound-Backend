@@ -1,0 +1,23 @@
+body {
+   background-color:lightblue;
+}
+div.maincontainer {
+    width: 1800px;
+    height: 1000px;
+    background-color:gainsboro;
+    position: absolute;
+    text-align: center;
+}
+div.leftcontainer {
+    width: 450px;
+    height: 450px;
+    background-color: ghostwhite;
+    position: absolute;
+}
+div.rightcontainer {
+    width: 450px;
+    height: 450px;
+    left: 550px;
+    background-color: ghostwhite;
+    position: absolute;
+}
