@@ -1,13 +1,22 @@
 body {
-   background-color:lightblue;
+    background-image: url('../images/background.png') left bottom;         
+    background-color:lightblue;
 }
+.default1{
+    color: #333;
+    background-color: red;
+    border-color: #ccc;
+} 
+.default2  {
+    color: #333;
+    background-color: blue;
+    border-color: #ccc;
+} */
 div.maincontainer {
     width: 1800px;
     height: 1000px;
-    background-color:gainsboro;
-    position: absolute;
+    position: relative;
     text-align: center;
-    background-image: lostnfound;
 }
 div.leftcontainer {
     width: 350px;
