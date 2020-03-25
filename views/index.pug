@@ -3,10 +3,17 @@ block body
     style
         include style1.css
     div.maincontainer
-        h1 Lost and Found
+        div.navbar
+            +navbar("","dropdown_menu")
+                h1 Lost and Found
         div.leftcontainer 
             a(href=""): button(type="button") I Found Something
         div.rightcontainer
             a(href=""): button(type="button") I Lost Something
+        div.bottomcontainer
+            h2
+                +btn-lg("Open Listings Page")
+        
+        
              
                     

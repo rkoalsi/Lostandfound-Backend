@@ -7,8 +7,7 @@ div.maincontainer {
     background-color:gainsboro;
     position: absolute;
     text-align: center;
-    background-image: lostnfound;
-}
+    }
 div.leftcontainer {
     width: 350px;
     height: 350px;
@@ -40,3 +39,29 @@ button {
     font-size: 20px;
     top: 20px;
 }
+
+h1 {
+    text-align: center;
+    position: relative;
+    left: 750px;
+    color: darkgrey;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+div.bottomcontainer {
+    width: 200px;
+    height: 200px;
+    background-color:ghostwhite;
+    position: absolute;
+    text-align: center;
+    left: 800px;
+    top: 600px;
+    }
+    
+h2 {
+    position: relative;
+    top: 50px;
+    color: darkgray;
+    
+   }
+
