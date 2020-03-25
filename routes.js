@@ -18,7 +18,7 @@ router.get('/lost',(req,res) => {
 })
 
 router.get('/found', (req,res) => {
-    res.render('found')
+    res.sendFile(__dirname +'/found.html')
 })
 
 module.exports = router
