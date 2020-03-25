@@ -18,9 +18,9 @@ router.get('/lost-form', (req,res) => {
 router.get('/lost',(req,res) => {
     res.render('lost')
 })
-
+ 
 router.get('/found', (req,res) => {
-    res.render('found')
+    res.render('found');
 })
 
 module.exports = router

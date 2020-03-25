@@ -2,16 +2,18 @@ extends ../node_modules/jade-bootstrap/_bootstrap.pug
 block body
     style
         include style1.css
-    +img-responsive("./static/background.png","Responsive Image")
-    div.maincontainer.Background
-        h1 Lost and Found
-        div.leftcontainer
-            - var btnType = 'info'
-            - var btnSize = 'lg'
-            button(type='button' class='btn default1' + ' btn-' + btnSize)
-            button(type='button' class='btn default2' +' btn-' +btnSize)
+    div.maincontainer
+        div.navbar
+            +navbar("","dropdown_menu")
+                h1 Lost and Found
+        div.leftcontainer 
             a(href=""): button(type="button") I Found Something
         div.rightcontainer
             a(href=""): button(type="button") I Lost Something
+        div.bottomcontainer
+            h2
+                +btn-lg("Open Listings Page")
+        
+        
              
                     
