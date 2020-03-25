@@ -6,7 +6,7 @@ const routes = require('./routes')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
-mongoose.connect('mongodb://localhost:27017/books-app', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/Lost&Found', {useNewUrlParser: true, useUnifiedTopology: true});
 app.engine('ejs', require('ejs').__express)
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
