@@ -1,11 +1,10 @@
 const User = require('../models/User')
 
-const controller = async (req,res) => {
-    const {body} = req;
+const controller = async (req, res) => {
     const user = await User.create({
-        name: body.name,
-        email:body.email,
-        phone:body.phone
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone
     })
     res.send(user)
 }
