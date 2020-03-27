@@ -14,8 +14,17 @@ app.engine('ejs', require('ejs').__express)
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
 }))
+app.use(
+    session({
+        secret: 'secret',
+        resave: true,
+        saveUninitialized: true
+    })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(bodyParser.json())
 app.use(routes)
 
