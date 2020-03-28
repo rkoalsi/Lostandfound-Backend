@@ -10,7 +10,10 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   phone: {
-    type: "number",
+    type: 'number'
+  },
+  password: {
+    type: 'string',
     required: true
   },
   date: {
@@ -18,6 +21,12 @@ const UserSchema = new mongoose.Schema({
     default: Date.now.toString()
   }
 });
+
+UserSchema.statics.createUser = async function(params) {
+  const { name, email, phone, password } = params;
+  const user = await this.create({ name, email, phone, password });
+  return user.toJSON();
+};
 
 const User = mongoose.model('User', UserSchema);
 module.exports = User;
