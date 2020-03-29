@@ -6,120 +6,125 @@ const passport = require('passport');
 const flash = require('flash');
 
 router.get('/', (req, res) => {
-  res.render('index');
+    res.render('index');
 });
 
 router.use('/', express.static('./static'));
 
 router.get('/found-form', (req, res) => {
-  res.render('found-form');
+    res.render('found-form');
 });
 
 router.get('/lost-form', (req, res) => {
-  res.render('lost-form');
+    res.render('lost-form');
 });
 
 router.get('/lost', (req, res) => {
-  res.render('lost');
+    res.render('lost');
 });
 
 router.get('/found', (req, res) => {
-  res.render('found');
+    res.render('found');
 });
 
 router.get('/register', (req, res) => {
-  res.render('register');
+    res.render('register');
 });
 
 router.post('/register', (req, res) => {
-  const { name, email, password, password2 } = req.body;
-  let errors = [];
+    const {
+        name,
+        email,
+        password,
+        password2
+    } = req.body;
+    let errors = [];
 
-  if (!name || !email || !password || !password2) {
-    errors.push({
-      msg: 'Please enter all fields'
-    });
-  }
-
-  if (password != password2) {
-    errors.push({
-      msg: 'Passwords do not match'
-    });
-  }
-
-  if (password.length < 6) {
-    errors.push({
-      msg: 'Password must be at least 6 characters'
-    });
-  }
-
-  if (errors.length > 0) {
-    res.render('register', {
-      errors,
-      name,
-      email,
-      password,
-      password2
-    });
-  } else {
-    User.findOne({
-      email: email
-    }).then(user => {
-      if (user) {
+    if (!name || !email || !password || !password2) {
         errors.push({
-          msg: 'Email already exists'
+            msg: 'Please enter all fields'
         });
-        res.render('register', {
-          errors,
-          name,
-          email,
-          password,
-          password2
-        });
-      } else {
-        const newUser = new User.createUser({
-          name,
-          email,
-          password
-        });
+    }
 
-        bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(newUser.password, salt, (err, hash) => {
-            if (err) throw err;
-            newUser.password = hash;
-            newUser
-              .save()
-              .then(user => {
-                req.flash(
-                  'success_msg',
-                  'You are now registered and can log in'
-                );
-                res.redirect('/login');
-              })
-              .catch(err => console.log(err));
-          });
+    if (password != password2) {
+        errors.push({
+            msg: 'Passwords do not match'
         });
-      }
-    });
-  }
+    }
+
+    if (password.length < 6) {
+        errors.push({
+            msg: 'Password must be at least 6 characters'
+        });
+    }
+
+    if (errors.length > 0) {
+        res.render('register', {
+            errors,
+            name,
+            email,
+            password,
+            password2
+        });
+    } else {
+        User.findOne({
+            email: email
+        }).then(user => {
+            if (user) {
+                errors.push({
+                    msg: 'Email already exists'
+                });
+                res.render('register', {
+                    errors,
+                    name,
+                    email,
+                    password,
+                    password2
+                });
+            } else {
+                const newUser = new User.create.save({
+                    name,
+                    email,
+                    password
+                });
+
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newUser.password, salt, (err, hash) => {
+                        if (err) throw err;
+                        newUser.password = hash;
+                        newUser
+                            .save()
+                            .then(user => {
+                                req.flash(
+                                    'success_msg',
+                                    'You are now registered and can log in'
+                                );
+                                res.redirect('/login');
+                            })
+                            .catch(err => console.log(err));
+                    });
+                });
+            }
+        });
+    }
 });
 router.get('/login', (req, res) => {
-  res.render('login');
+    res.render('login');
 });
 
 router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/login',
-    failureFlash: false
-  })(req, res, next);
+    passport.authenticate('local', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/login',
+        failureFlash: false
+    })(req, res, next);
 });
 
 router.get('/found-item', (req, res) => {
-  res.render('found-item');
+    res.render('found-item');
 });
 
 router.get('/lost-item', (req, res) => {
-  res.render('lost-item');
+    res.render('lost-item');
 });
 module.exports = router;
