@@ -82,7 +82,8 @@ router.post('/register', (req, res) => {
                     password2
                 });
             } else {
-                const newUser = new User.create.save({
+                // create and save are two different approaches of writing data in a model, use either save or create.
+                const newUser = new User({
                     name,
                     email,
                     password
@@ -95,10 +96,12 @@ router.post('/register', (req, res) => {
                         newUser
                             .save()
                             .then(user => {
-                                req.flash(
-                                    'success_msg',
-                                    'You are now registered and can log in'
-                                );
+
+                                // dont do this, you will need a plugin req-flash for this. Not a good idea!
+                                // req.flash(
+                                //     'success_msg',
+                                //     'You are now registered and can log in'
+                                // );
                                 res.redirect('/login');
                             })
                             .catch(err => console.log(err));
