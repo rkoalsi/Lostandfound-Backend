@@ -9,9 +9,6 @@ const UserSchema = new mongoose.Schema({
     type: 'string',
     required: true
   },
-  phone: {
-    type: 'number'
-  },
   password: {
     type: 'string',
     required: true
@@ -22,22 +19,6 @@ const UserSchema = new mongoose.Schema({
     default: new Date()
   }
 });
-
-UserSchema.statics.createUser = async function (params) {
-  const {
-    name,
-    email,
-    phone,
-    password
-  } = params;
-  const user = await this.create({
-    name,
-    email,
-    phone,
-    password
-  });
-  return user.toJSON();
-};
 
 const User = mongoose.model('User', UserSchema);
 module.exports = User;

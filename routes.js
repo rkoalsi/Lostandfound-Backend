@@ -54,7 +54,6 @@ router.post('/register', (req, res) => {
 
   if (errors.length > 0) {
     res.render('register', {
-      errors,
       name,
       email,
       password,
@@ -65,11 +64,7 @@ router.post('/register', (req, res) => {
       email: email
     }).then(user => {
       if (user) {
-        errors.push({
-          msg: 'Email already exists'
-        });
         res.render('register', {
-          errors,
           name,
           email,
           password,
@@ -77,7 +72,7 @@ router.post('/register', (req, res) => {
         });
       } else {
         // create and save are two different approaches of writing data in a model, use either save or create.
-        const newUser = new User.create({
+        const newUser = new User({
           name,
           email,
           password
@@ -90,11 +85,6 @@ router.post('/register', (req, res) => {
             newUser
               .save()
               .then(user => {
-                // dont do this, you will need a plugin req-flash for this. Not a good idea!
-                // req.flash(
-                //     'success_msg',
-                //     'You are now registered and can log in'
-                // );
                 res.redirect('/login');
               })
               .catch(err => console.log(err));
@@ -104,6 +94,7 @@ router.post('/register', (req, res) => {
     });
   }
 });
+
 router.get('/login', (req, res) => {
   res.render('login');
 });
@@ -111,7 +102,8 @@ router.get('/login', (req, res) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/login'
+    failureRedirect: '/login',
+    failureFlash: true
   })(req, res, next);
 });
 
