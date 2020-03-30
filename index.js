@@ -9,7 +9,7 @@ const passport = require('passport');
 require('./config/passport')(passport);
 
 mongoose
-  .connect('mongodb://localhost:27017/Lost&Found', {
+  .connect('mongodb://localhost:27017/lost-and-found', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

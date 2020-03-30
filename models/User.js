@@ -23,9 +23,19 @@ const UserSchema = new mongoose.Schema({
   }
 });
 
-UserSchema.statics.createUser = async function(params) {
-  const { name, email, phone, password } = params;
-  const user = await this.create({ name, email, phone, password });
+UserSchema.statics.createUser = async function (params) {
+  const {
+    name,
+    email,
+    phone,
+    password
+  } = params;
+  const user = await this.create({
+    name,
+    email,
+    phone,
+    password
+  });
   return user.toJSON();
 };
 
