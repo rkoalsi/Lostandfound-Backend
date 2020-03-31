@@ -18,10 +18,12 @@ const ItemSchema = new mongoose.Schema({
         required: true
     },
     status: {
-        type: 'boolean'
+        type: 'boolean',
+        default: false
     },
     completed: {
-        type: 'boolean'
+        type: 'boolean',
+        default: false
     }
 })
 

@@ -24,7 +24,8 @@ router.get('/lost-form', (req, res) => {
 })
 
 router.post('/lost-form', (req, res) => {
-    const status = completed = false
+    var status, completed;
+    status = completed = false;
     const {
         name,
         type,
@@ -62,7 +63,7 @@ router.post('/lost-form', (req, res) => {
 });
 
 router.get('/lost', (req, res) => {
-    res.render('lost');
+    res.render('lost-item');
 });
 
 router.get('/found', (req, res) => {
