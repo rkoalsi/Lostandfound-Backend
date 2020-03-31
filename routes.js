@@ -31,14 +31,6 @@ router.post('/lost-form', (req, res) => {
     } = req.body
     let errors = []
 
-    if (!user || !email || !contact || !where || !about || !type || !name) {
-        errors.push({
-            msg: 'Please fill in all fields'
-        });
-        console.log(errors[0])
-    }
-
-
     if (errors.length > 0) {
         res.render('lost-form', {
             name,
@@ -54,9 +46,9 @@ router.post('/lost-form', (req, res) => {
             name,
             about,
             type,
-            where
+            where,
         })
-        newItem.save().then(user => {
+        newItem.save().then(item => {
             res.redirect('/lost')
         })
     }
