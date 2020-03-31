@@ -15,6 +15,10 @@ router.get('/found-form', (req, res) => {
     res.render('found-form');
 });
 
+router.post('/found-form', (req, res) => {
+
+})
+
 router.get('/lost-form', (req, res) => {
     res.render('lost-form')
 })
