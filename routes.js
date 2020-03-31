@@ -20,6 +20,7 @@ router.get('/lost-form', (req, res) => {
 })
 
 router.post('/lost-form', (req, res) => {
+    const status = completed = false
     const {
         name,
         type,
@@ -47,6 +48,8 @@ router.post('/lost-form', (req, res) => {
             about,
             type,
             where,
+            status,
+            completed
         })
         newItem.save().then(item => {
             res.redirect('/lost')
