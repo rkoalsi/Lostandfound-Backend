@@ -38,18 +38,21 @@ router.post('/register', (req, res) => {
     errors.push({
       msg: 'Please enter all fields'
     });
+    console.log('Please enter all fields');
   }
 
   if (password != password2) {
     errors.push({
       msg: 'Passwords do not match'
     });
+    console.log('Passwords do not match');
   }
 
   if (password.length < 6) {
     errors.push({
       msg: 'Password must be at least 6 characters'
     });
+    console.log('Password must be at least 6 characters');
   }
 
   if (errors.length > 0) {
@@ -70,6 +73,7 @@ router.post('/register', (req, res) => {
           password,
           password2
         });
+        console.log('User is already registered with this email');
       } else {
         // create and save are two different approaches of writing data in a model, use either save or create.
         const newUser = new User({
