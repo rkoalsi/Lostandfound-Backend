@@ -10,7 +10,7 @@ const {
 } = require('./config/auth')
 
 
-router.get('/', ensureAuthenticated, (req, res) => {
+router.get('/', (req, res) => {
     res.render('index');
 });
 
