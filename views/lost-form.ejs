@@ -1,59 +1,69 @@
-
 <head>
-    <link rel="stylesheet" href="/css/found-form.css">
-    <link href='https://fonts.googleapis.com/css?family=Angkor' rel='stylesheet'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/found-form.css">
+  <link href='https://fonts.googleapis.com/css?family=Angkor' rel='stylesheet'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+
 <body>
-    <div class="maincontainer">
-      <h1 class="heading">
-        I Lost Something!
+  <div class="maincontainer">
+    <h1 class="heading">
+      I Lost Something!
     </h1>
-        <div class="left_container">
-            <div class='itemdescription'>
-                <p class='item'>Item Description</p>
-        
-                    <div class="item_name">
-                      <label for="item_name1">Item Name</label>
-                      <input type="text" class="form-control" id="item_name">
-                    </div>
-                    <div class="item_type">
-                        <label for="item_type1">Item Type</label>
-                        <input type="text" class="form-control" id="item_type">
-                      </div>
-                      <div class="about_item">
-                        <label for="About_item1">About Item</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
-                      <div class="found_item">
-                        <label for="found_item1">Where Did You Lose The Item</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
-            </div>
+    <div class="left_container">
+      <div class='itemdescription'>
+        <p class='item'>Item Description</p>
 
+        <form action="/lost-form" method="POST">
+          <div class="item_name">
+            <label for="item_name1">Item Name</label>
+            <input type="name" name='name' class="form-control" id="name"
+              value="<%= typeof name != 'undefined' ? name : '' %>" />
 
-        </div>
-        <div class="right_container">
-            <div class="yourinfo">
-                <p>Your Info </p>
-                <div class="person_name">
-                    <label for="person_name1">Name</label>
-                    <input type="text" class="form-control" id="item_name">
-                  </div>
-                  <div class="contact_no">
-                      <label for="item_type1">Contact No.</label>
-                      <input type="text" class="form-control" id="item_type">
-                    </div>
-                    <div class="email_id">
-                      <label for="email_id">Email ID</label>
-                      <input type="email" class="form-control" id="item_name" placeholder="name@example.com">
-                    </div>
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary btn-lg">SUBMIT!</button>
+          </div>
+          <div class="item_type">
+            <label for="item_type1">Item Type</label>
+            <input type="type" name='type' class="form-control" id='type'
+              value="<%= typeof type != 'undefined' ? type : '' %>" />
+          </div>
+          <div class="about_item">
+            <label for="About_item1">About Item</label>
+            <input type="about" name='about' class="form-control" id="about"
+              value="<%= typeof about != 'undefined' ? about : '' %>" />
+          </div>
+          <div class="found_item">
+            <label for="found_item1">Where Did You Lose The Item</label>
+            <input type="where" name='where' class="form-control" id="where"
+              value="<%= typeof where != 'undefined' ? where : '' %>" />
+          </div>
+      </div>
+
 
     </div>
-    
+    <div class="right_container">
+      <div class="yourinfo">
+        <p>Your Info </p>
+        <div class="person_name">
+          <label for="person_name1">Name</label>
+          <input type="user" class="form-control" id="user" value="<%= typeof user != 'undefined' ? user : '' %>" />
+        </div>
+        <div class="contact_no">
+          <label for="item_type1">Contact No.</label>
+          <input type="contact" name='contact' class="form-control" id="contact"
+            value="<%= typeof contact != 'undefined' ? contact : '' %>" />
+        </div>
+        <div class="email_id">
+          <label for="email_id">Email ID</label>
+          <input type="email" name='email' class="form-control" id="email" placeholder="name@example.com"
+            value="<%= typeof email != 'undefined' ? email : '' %>" />
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg">SUBMIT!</button>
+
+    </form>
+  </div>
+
 </body>
+
 </html>
