@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 require('./config/passport')(passport);
-var flash = require("connect-flash");
-
+const cookieParser = require('cookie-parser');
+var flash = require('connect-flash');
 
 mongoose
   .connect('mongodb://localhost:27017/lost-and-found', {
@@ -18,6 +18,7 @@ mongoose
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
+app.use(cookieParser());
 app.engine('ejs', require('ejs').__express);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -28,7 +29,7 @@ app.use(
 );
 app.use(
   session({
-    secret: 'secret',
+    secret: 'doob',
     resave: true,
     saveUninitialized: true
   })
@@ -38,6 +39,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
 app.use(flash());
+app.use(function(req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
 app.use(require('./routes'));
 
 app.listen(port, () => {
