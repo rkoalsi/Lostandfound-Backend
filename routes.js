@@ -4,8 +4,13 @@ const bcrypt = require('bcryptjs');
 const User = require('./models/User');
 const Item = require('./models/Item')
 const passport = require('passport');
+const {
+    forwardAuthenticated,
+    ensureAuthenticated
+} = require('./config/auth')
 
-router.get('/', (req, res) => {
+
+router.get('/', ensureAuthenticated, (req, res) => {
     res.render('index');
 });
 
@@ -27,6 +32,7 @@ router.post('/found-form', (req, res) => {
         email
     } = req.body
     let errors = []
+
     if (errors.length > 0) {
         res.render('found-form', {
             name,
@@ -48,6 +54,7 @@ router.post('/found-form', (req, res) => {
         newItem.save().then(user => {
             res.redirect('/found')
         })
+
     }
 })
 
@@ -102,7 +109,7 @@ router.get('/found', (req, res) => {
     res.render('found-item');
 });
 
-router.get('/register', (req, res) => {
+router.get('/register', forwardAuthenticated, (req, res) => {
     res.render('register');
 });
 
@@ -170,7 +177,7 @@ router.post('/register', (req, res) => {
     }
 });
 
-router.get('/login', (req, res) => {
+router.get('/login', forwardAuthenticated, (req, res) => {
     res.render('login');
 });
 

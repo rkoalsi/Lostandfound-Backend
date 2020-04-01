@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 require('./config/passport')(passport);
+var flash = require("connect-flash");
+
 
 mongoose
   .connect('mongodb://localhost:27017/lost-and-found', {
@@ -35,6 +37,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
+app.use(flash());
 app.use(require('./routes'));
 
 app.listen(port, () => {
