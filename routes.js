@@ -16,7 +16,39 @@ router.get('/found-form', (req, res) => {
 });
 
 router.post('/found-form', (req, res) => {
-
+    var status = true
+    const {
+        name,
+        type,
+        about,
+        where,
+        user,
+        contact,
+        email
+    } = req.body
+    let errors = []
+    if (errors.length > 0) {
+        res.render('found-form', {
+            name,
+            type,
+            about,
+            where,
+            user,
+            contact,
+            email
+        })
+    } else {
+        const newItem = new Item({
+            name,
+            type,
+            about,
+            where,
+            status
+        })
+        newItem.save().then(user => {
+            res.redirect('/found')
+        })
+    }
 })
 
 router.get('/lost-form', (req, res) => {
@@ -67,7 +99,7 @@ router.get('/lost', (req, res) => {
 });
 
 router.get('/found', (req, res) => {
-    res.render('found');
+    res.render('found-item');
 });
 
 router.get('/register', (req, res) => {
