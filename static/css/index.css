@@ -1,52 +1,103 @@
-
-.maincontainer {
-    width: 1800px;
-    height: 1000px;
-    position: relative;
-    text-align: center;
-    background-color: lightblue
-    
-    }
 .leftcontainer {
-    width: 350px;
-    height: 350px;
-    left: 250px;
-    top: 200px;
-    background-color: lightcoral;
+    width: 40%;
+    height: 50%;
     position: absolute;
-    }
+    background-color: #f8f9fa;
+    left: 40px;
+    /* background-image: url("../images/smoke.png"); */
+
+    
+}
+
+
 .rightcontainer {
-    width: 350px;
-    height: 350px;
-    right: 250px;
-    top: 200px;
-    background-color: greenyellow;
+    width: 40%;
+    height: 50%;
     position: absolute;
+    right: 40px;
+    background-color: #f8f9fa;
+    /* background-image: url("../images/smoke.png"); */
+    
 }
 
-.bottomcontainer {
-    margin-top: 700px;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.btn {
-    margin-top: 175px;
-}
-
-.sticky {
-    position: -webkit-sticky;
-    position: sticky;
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: lightgrey;
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    margin-top: 30%;
+    margin-left: 35%;
+    
+    
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
     top: 0;
-    padding: 5px;
-    background-color: #cae8ca;
-    border: 2px solid #4CAF50;
-    font-family: 'Angkor';
-    font-size: 42px;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
   }
 
-
+  .w3-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-left: 50%;
+    margin-top: 60%;
+    border-radius: 25px;
+  }
+  
+  .btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .95rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-right: 10px;
+}

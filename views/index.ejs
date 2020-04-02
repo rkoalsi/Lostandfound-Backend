@@ -3,20 +3,27 @@
 
 <head>
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href='https://fonts.googleapis.com/css?family=Angkor' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="maincontainer">
+    <div class="container-fluid">
 
-        <h1 class="sticky">
-            Lost And Found
-        </h1>
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand">Lost And Found</a>
+            <form class="form-inline">
+                
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</button>
+            </form>
+        </nav>
 
-
-        <div class="leftcontainer">
+        <!-- <div class="leftcontainer">
             <a href="/lost-form" type="button" class="btn btn-primary btn-lg">I Lost Something</a>
         </div>
         <div class="rightcontainer">
@@ -25,8 +32,23 @@
 
         <h2 style="margin-top:500px;">
             <a href='/lost-item' type="button" class="btn btn-primary btn-lg">Go to the Lost listings page</a>
-        </h2>
+        </h2> -->
+        <br>
+        <div class="leftcontainer">
+            <button href="/lost-form" type="button"  class="button" style="vertical-align:middle"  ><span>I Lost!!!</span></button>
+        </div>
+        <div class="rightcontainer">
+            <button href="/found-form" class="button" style="vertical-align:middle"><span>I Found!!! </span></button>
+        </div>
+        <br>
+        
+            <div class="w3-panel" style="width:50%">
+                <button href='/lost-item' class="w3-button w3-block w3-teal">Go To The Listings Page
+                </button>
+              </div>
 
+        
+        <br>
     </div>
 </body>
 
