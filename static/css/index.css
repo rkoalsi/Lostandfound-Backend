@@ -1,40 +1,58 @@
 .leftcontainer {
-    width: 40%;
-    height: 50%;
+    width: 300px;
+    height: 200px;
     position: absolute;
     background-color: #f8f9fa;
-    left: 40px;
-    /* background-image: url("../images/smoke.png"); */
+    left: 400px;
+    top: 150px;
+    border-radius: 20px;
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,241,241,1) 0%);
 
     
 }
 
 
 .rightcontainer {
-    width: 40%;
-    height: 50%;
+    width: 300px;
+    height: 200px;
     position: absolute;
-    right: 40px;
+    right: 450px;
+    top: 150px;
     background-color: #f8f9fa;
-    /* background-image: url("../images/smoke.png"); */
+    border-radius: 20px;
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,241,241,1) 0%);
     
+    
+    
+}
+
+.bg-light {
+  background-color: #f8f9fa!important;
+  background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,241,241,1) 0%);
+
 }
 
 .button {
     display: inline-block;
-    border-radius: 4px;
-    background-color: lightgrey;
+    border-radius: 20px;
+    /* background-color:lightpink; */
     border: none;
     color: black;
     text-align: center;
     font-size: 28px;
     padding: 20px;
-    width: 200px;
+    width:250px;
     transition: all 0.5s;
     cursor: pointer;
-    margin: 5px;
-    margin-top: 30%;
-    margin-left: 35%;
+    margin: 25px;
+    margin-top: 50px;
+    /* margin-left:50px; */
+    background: linear-gradient(to bottom, #ffffff 25%, #33cccc 75%);
+    
+    
     
     
   }
@@ -79,7 +97,14 @@
     margin-left: 50%;
     margin-top: 60%;
     border-radius: 25px;
+   
   }
+
+  .w3-block {
+    display: block;
+    width: 100%;
+    font-size: 25px;
+}
   
   .btn {
     display: inline-block;
@@ -100,4 +125,60 @@
     border-radius: .95rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     margin-right: 10px;
+}
+
+.body {
+  background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(103,250,245,1) 0%, rgba(159,73,68,1) 82%);
+}
+
+
+
+
+
+.button1 {
+  display: inline-block;
+  border-radius: 20px;
+  /* background-color:lightpink; */
+  border: none;
+  color: black;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width:250px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 25px;
+  margin-top: 50px;
+  /* margin-left:50px; */
+  background: linear-gradient(to bottom, #ffffff 20%,#993333 80%);
+  
+  
+  
+  
+}
+
+.button1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button1:hover span {
+  padding-right: 25px;
+}
+
+.button1:hover span:after {
+  opacity: 1;
+  right: 0;
 }
