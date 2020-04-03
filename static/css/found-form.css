@@ -1,6 +1,5 @@
 .Found_Form {
-    background: linear-gradient(to bottom, #ffffff 20%,#993333 80%);
-}
+  background: linear-gradient(to bottom, #0099cc 25%, #ff00ff 75%);}
 .btn {
     background-color: lightskyblue;
     border: none;
@@ -12,6 +11,18 @@
   .btn:hover {
     background-color: #cd7ef5;
   }
-  textarea.form-control {
-    resize: none;
- }
+ input[type="file"]{
+  display: none;
+}
+.image_btn{
+  margin-top: 5px;
+  margin-right: 630px;
+  color:black;
+  background-color:white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat",sans-serif;
+}
+
