@@ -1,13 +1,14 @@
-body{
-    background: linear-gradient(to bottom, #0099cc 17%, #ffff99 100%);
+body {
+  background: linear-gradient(to bottom, #0099cc 17%, #ffff99 100%);
 }
-.sub_btn{
-    color: black;
-    background-color: #ffff99;
-    border:1px solid #ffff99;
-    margin-left: 40%;
-  }
-  
-  .sub_btn:hover{
-    background-color:#ffff66;
-  }
+
+.sub_btn {
+  color: black;
+  background-color: #ffff99;
+  border: 1px solid #ffff99;
+  margin-left: 40%;
+}
+
+.sub_btn:hover {
+  background-color: #ffff66;
+}

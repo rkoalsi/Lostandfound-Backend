@@ -27,16 +27,19 @@ router.post('/found-form', (req, res) => {
     about,
     where,
   } = req.body;
-  const productImage = req.file
   let errors = [];
+  if (!name || !type || !about || !where) {
+    errors.push({
+      msg: "Please enter all fields"
+    })
+  }
 
   if (errors.length > 0) {
     res.render('found-form', {
       name,
       type,
       about,
-      where,
-      productImage
+      where
     });
   } else {
     const newItem = new Item({
@@ -45,8 +48,7 @@ router.post('/found-form', (req, res) => {
       about,
       where,
       status,
-      completed,
-      productImage
+      completed
     });
     newItem.save().then(user => {
       res.redirect('/found');
@@ -66,21 +68,21 @@ router.post('/lost-form', (req, res) => {
     type,
     about,
     where,
-    user,
-    contact,
-    email
   } = req.body;
   let errors = [];
 
+  if (!name || !type || !about || !where) {
+    errors.push({
+      msg: 'Please enter all fields'
+    });
+  }
   if (errors.length > 0) {
     res.render('lost-form', {
+      errors,
       name,
       type,
       about,
       where,
-      user,
-      contact,
-      email
     });
   } else {
     const newItem = new Item({
@@ -161,6 +163,7 @@ router.post('/register', (req, res) => {
           password2
         });
       } else {
+
         const newUser = new User({
           name,
           email,
@@ -175,6 +178,10 @@ router.post('/register', (req, res) => {
             newUser
               .save()
               .then(user => {
+                req.flash(
+                  'success_msg',
+                  'You are now registered and can log in'
+                );
                 res.redirect('/login');
               })
               .catch(err => console.log(err));
@@ -193,7 +200,7 @@ router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
-    failureFlash: false
+    failureFlash: true
   })(req, res, next);
 });
 
