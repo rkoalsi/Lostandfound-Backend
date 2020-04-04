@@ -32,13 +32,13 @@
                             value="<%= typeof about != 'undefined' ? about : '' %>" />
                     </div>
                     <div class="image_btn">
-                    <input type="file" id="file" accept="image/*">
-                    <label for="file">
-                        <i class="material-icons">
-                            add_photo_alternate
-                        </i>&nbsp;
-                     </label>
-                     </div>
+                        <input type="file"  name="file" id="file" accept="image/*" onchange="previewImage();">
+                        <label for="file"> 
+                            <i class="material-icons">
+                                add_photo_alternate</i>&nbsp;
+                         </label>
+                         <img id="preview">
+                         </div>
                     <div class="lost_item">
                         <label for="lost_item1">Where Did You Lose The Item?</label>
                         <input type="where" name='where' class="form-control" id="where"
@@ -50,4 +50,17 @@
             </div>
         </div>
     </div>
+    <script>
+        function previewImage(){
+            var file = document.getElementById("file").files;
+            if (file.length > 0) {
+                var fileReader = new FileReader();
+
+                fileReader.onload=function (event){
+                    document.getElementById("preview").setAttribute("src", event.target.result);
+                };
+                fileReader.readAsDataURL(file[0])
+            }
+        }
+    </script>
 </body>
