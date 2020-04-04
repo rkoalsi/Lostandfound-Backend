@@ -1,3 +1,11 @@
+body {
+  background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(103,250,245,1) 0%, rgba(159,73,68,1) 82%);
+}
+
+
+
+
 .navbar-brand {
     display: inline-block;
     padding-top: .3125rem;
@@ -6,16 +14,29 @@
     font-size: 1.25rem;
     line-height: inherit;
     white-space: nowrap;
+    font-family: 'IM Fell French Canon SC', serif; 
+    margin-left: 380px;
+}
+
+.btn {
+  margin-right: 5px;
 }
 
 .heading{
 text-align: center;
 font-size: 2.1rem;
+font-family: 'Abel', sans-serif;
+}
 
+
+.badge-secondary {
+  color: #fff;
+  background-color: black;
 }
 
 .subheading{
     text-shadow: 2px 2px 5px lightgrey;
+    font-family: 'Vollkorn', serif;
 }
 .grid-container {
     display: grid;
@@ -26,6 +47,9 @@ font-size: 2.1rem;
     background-color: lightgrey;
     padding: 20px;
     justify-content:space-around;
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(160,187,186,1) 0%);
+    
   }
   
   .grid-container > div {
@@ -37,4 +61,50 @@ font-size: 2.1rem;
     width: 350px;
 
   }
+
+  b {
+    color: black;
+
+    font-family: 'Vollkorn', serif;
+
+  }
+
+  p {
+    color: black;
+    font-family: 'Abel', sans-serif;
+  }
+
+  .container {
+    color: black;
+  }
   
+
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+  }
+  
+  a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .previous {
+    background-color: #f1f1f1;
+    color: black;
+  }
+  
+  .next {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .round {
+    border-radius: 50%;
+  }
+
+  .pagebuttons {
+    margin-left: 48%;
+  }
