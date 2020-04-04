@@ -17,6 +17,10 @@ const ItemSchema = new mongoose.Schema({
         type: 'string',
         required: true
     },
+    productImage: {
+        data: Buffer,
+        contentType: String
+    },
     status: {
         type: 'boolean',
         default: false
