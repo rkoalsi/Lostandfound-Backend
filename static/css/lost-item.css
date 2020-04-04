@@ -1,6 +1,5 @@
 body {
-  background: rgb(131,58,180);
-background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(103,250,245,1) 0%, rgba(159,73,68,1) 82%);
+    background: linear-gradient(to bottom, #0099cc 17%, #ffff99 100%);
 }
 
 
@@ -16,7 +15,7 @@ background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(103,250,245,1) 0%
     white-space: nowrap;
     font-family: 'IM Fell French Canon SC', serif; 
     margin-left: 380px;
-}
+  }
 
 .btn {
   margin-right: 5px;
@@ -48,7 +47,7 @@ font-family: 'Abel', sans-serif;
     padding: 20px;
     justify-content:space-around;
     background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(160,187,186,1) 0%);
+background: transparent;
     
   }
   

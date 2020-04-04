@@ -1,5 +1,5 @@
 .Lost_Form {
-    background: linear-gradient(to bottom, #0099cc 25%, #ff00ff 75%);
+  background: linear-gradient(to bottom, #0099cc 17%, #ffff99 100%);
 }
 .btn {
     background-color: lightskyblue;
@@ -33,6 +33,17 @@
   border: 2px solid white ;
   margin-left: 60px;
   margin-top:15px
+  }
+  
+  .sub_btn{
+    color: black;
+    background-color: #ffff99;
+    border:1px solid #ffff99;
+    margin-left: 40%;
+  }
+  
+  .sub_btn:hover{
+    background-color:#ffff66;
   }
   
  
