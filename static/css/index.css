@@ -1,6 +1,18 @@
+.navbar-brand {
+  display: inline-block;
+  padding-top: .3125rem;
+  padding-bottom: .3125rem;
+  margin-right: 1rem;
+  font-size: 25rem;
+  line-height: inherit;
+  white-space: nowrap;
+ font-family: 'IM Fell French Canon SC', serif;
+ 
+}
+
 .leftcontainer {
     width: 300px;
-    height: 200px;
+    height: 175px;
     position: absolute;
     background-color: #f8f9fa;
     left: 400px;
@@ -8,6 +20,8 @@
     border-radius: 20px;
     background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,241,241,1) 0%);
+overflow: auto;
+font-family: 'IM Fell French Canon SC', serif;
 
     
 }
@@ -15,7 +29,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,241,241,1) 0%);
 
 .rightcontainer {
     width: 300px;
-    height: 200px;
+    height: 175px;
     position: absolute;
     right: 450px;
     top: 150px;
@@ -23,6 +37,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,241,241,1) 0%);
     border-radius: 20px;
     background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,241,241,1) 0%);
+overflow: auto;
+ font-family: 'IM Fell French Canon SC', serif;
     
     
     
@@ -47,9 +63,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,241,241,1) 0%);
     width:250px;
     transition: all 0.5s;
     cursor: pointer;
-    margin: 25px;
-    margin-top: 50px;
-    /* margin-left:50px; */
+    /* margin: 25px; */
+    /* margin-top: 120px; */
+    margin-left: 25px;
     background: linear-gradient(to bottom, #ffffff 25%, #33cccc 75%);
     
     
@@ -95,8 +111,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,241,241,1) 0%);
     cursor: pointer;
     white-space: nowrap;
     margin-left: 50%;
-    margin-top: 60%;
+    margin-top: 50%;
     border-radius: 25px;
+    font-family: 'IM Fell French Canon SC', serif;
    
   }
 
@@ -148,9 +165,9 @@ background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(103,250,245,1) 0%
   width:250px;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 25px;
-  margin-top: 50px;
-  /* margin-left:50px; */
+  /* margin: 25px;
+  margin-top: 250px; */
+  margin-left:25px;
   background: linear-gradient(to bottom, #ffffff 20%,#993333 80%);
   
   
@@ -182,3 +199,14 @@ background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(103,250,245,1) 0%
   opacity: 1;
   right: 0;
 }
+
+.p1 {
+  font-size: 22px;
+  text-align: center;
+  margin: 5px;
+margin-top: 15px;
+  
+}
+
+
+
