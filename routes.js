@@ -4,7 +4,10 @@ const bcrypt = require('bcryptjs');
 const User = require('./models/User');
 const Item = require('./models/Item');
 const passport = require('passport');
-const { forwardAuthenticated, ensureAuthenticated } = require('./config/auth');
+const {
+  forwardAuthenticated,
+  ensureAuthenticated
+} = require('./config/auth');
 
 router.get('/', (req, res) => {
   res.render('index');
@@ -18,7 +21,13 @@ router.get('/found-form', (req, res) => {
 
 router.post('/found-form', (req, res) => {
   var status = true;
-  const { name, type, about, where } = req.body;
+  var completed = false;
+  const {
+    name,
+    type,
+    about,
+    where
+  } = req.body;
   let errors = [];
   if (!name || !type || !about || !where) {
     errors.push({
@@ -43,6 +52,7 @@ router.post('/found-form', (req, res) => {
       completed
     });
     newItem.save().then(user => {
+      req.flash('success_msg', 'Your item has been posted');
       res.redirect('/found');
     });
   }
@@ -55,7 +65,12 @@ router.get('/lost-form', (req, res) => {
 router.post('/lost-form', (req, res) => {
   var status, completed;
   status = completed = false;
-  const { name, type, about, where } = req.body;
+  const {
+    name,
+    type,
+    about,
+    where
+  } = req.body;
   let errors = [];
 
   if (!name || !type || !about || !where) {
@@ -82,6 +97,7 @@ router.post('/lost-form', (req, res) => {
     });
 
     newItem.save().then(item => {
+      req.flash('success_msg', 'Your item has been successfully posted');
       res.redirect('/lost');
     });
   }
@@ -100,7 +116,12 @@ router.get('/register', forwardAuthenticated, (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-  const { name, email, password, password2 } = req.body;
+  const {
+    name,
+    email,
+    password,
+    password2
+  } = req.body;
   let errors = [];
 
   if (!name || !email || !password || !password2) {
