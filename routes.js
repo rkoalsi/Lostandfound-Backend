@@ -4,10 +4,7 @@ const bcrypt = require('bcryptjs');
 const User = require('./models/User');
 const Item = require('./models/Item');
 const passport = require('passport');
-const {
-  forwardAuthenticated,
-  ensureAuthenticated
-} = require('./config/auth');
+const { forwardAuthenticated, ensureAuthenticated } = require('./config/auth');
 
 router.get('/', (req, res) => {
   res.render('index');
@@ -21,17 +18,12 @@ router.get('/found-form', (req, res) => {
 
 router.post('/found-form', (req, res) => {
   var status = true;
-  const {
-    name,
-    type,
-    about,
-    where,
-  } = req.body;
+  const { name, type, about, where } = req.body;
   let errors = [];
   if (!name || !type || !about || !where) {
     errors.push({
-      msg: "Please enter all fields"
-    })
+      msg: 'Please enter all fields'
+    });
   }
 
   if (errors.length > 0) {
@@ -63,12 +55,7 @@ router.get('/lost-form', (req, res) => {
 router.post('/lost-form', (req, res) => {
   var status, completed;
   status = completed = false;
-  const {
-    name,
-    type,
-    about,
-    where,
-  } = req.body;
+  const { name, type, about, where } = req.body;
   let errors = [];
 
   if (!name || !type || !about || !where) {
@@ -82,7 +69,7 @@ router.post('/lost-form', (req, res) => {
       name,
       type,
       about,
-      where,
+      where
     });
   } else {
     const newItem = new Item({
@@ -93,7 +80,7 @@ router.post('/lost-form', (req, res) => {
       status,
       completed
     });
-    console.log(newItem);
+
     newItem.save().then(item => {
       res.redirect('/lost');
     });
@@ -113,12 +100,7 @@ router.get('/register', forwardAuthenticated, (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-  const {
-    name,
-    email,
-    password,
-    password2
-  } = req.body;
+  const { name, email, password, password2 } = req.body;
   let errors = [];
 
   if (!name || !email || !password || !password2) {
@@ -163,7 +145,6 @@ router.post('/register', (req, res) => {
           password2
         });
       } else {
-
         const newUser = new User({
           name,
           email,
@@ -174,7 +155,7 @@ router.post('/register', (req, res) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
             newUser.password = hash;
-            console.log(newUser)
+            console.log(newUser);
             newUser
               .save()
               .then(user => {
