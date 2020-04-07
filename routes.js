@@ -65,6 +65,7 @@ router.get('/lost-form', (req, res) => {
 router.post('/lost-form', (req, res) => {
   var status, completed;
   status = completed = false;
+
   const {
     name,
     type,
@@ -95,10 +96,9 @@ router.post('/lost-form', (req, res) => {
       status,
       completed
     });
-
-    newItem.save().then(item => {
-      req.flash('success_msg', 'Your item has been successfully posted');
-      res.redirect('/lost');
+    newItem.save().then(user => {
+      req.flash('success_msg', 'Your item has been posted');
+      res.redirect('/found');
     });
   }
 });
@@ -212,6 +212,14 @@ router.get('/found-item', (req, res) => {
 
 router.get('/lost-item', (req, res) => {
   res.render('lost-item');
+});
+
+router.get('/single-lost', (req, res) => {
+  res.render('single-lost');
+});
+
+router.get('/single-found', (req, res) => {
+  res.render('single-found');
 });
 
 module.exports = router;
