@@ -1,41 +1,55 @@
-.navbar-brand {
-    display: inline-block;
-    padding-top: .3125rem;
-    padding-bottom: .3125rem;
-    margin-right: 1rem;
-    font-size: 1.25rem;
-    line-height: inherit;
-    white-space: nowrap;
+body {
+  background: linear-gradient(to bottom, #0099cc 17%, #ffff99 100%);
 }
 
-.heading{
-text-align: center;
-font-size: 2.1rem;
 
+
+/* NAVBAR */
+.navbar-brand {
+  display: inline-block;
+  padding-top: .3125rem;
+  padding-bottom: .3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+  font-family: 'IM Fell French Canon SC', serif; 
+  /* margin-left: 380px; */
+}
+
+/* NAVBAR BUTTON */
+.btn {
+margin-right: 5px;
+}
+
+/* PAGE HEADING */
+.heading{
+/* text-align: center; */
+font-size: 2.1rem;
+font-family: 'Abel', sans-serif;
+}
+
+
+.badge-secondary {
+color: #fff;
+background-color: black;
 }
 
 .subheading{
-    text-shadow: 2px 2px 5px lightgrey;
+  text-shadow: 2px 2px 5px lightgrey;
+  font-family: 'Vollkorn', serif;
 }
-.grid-container {
-    display: grid;
-    height: 800px;
-    /* align-content: center; */
-    grid-template-columns: auto auto auto auto;
-    grid-gap: 10px;
-    background-color: lightgrey;
-    padding: 20px;
-    justify-content:space-around;
-  }
-  
-  .grid-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 10px 0;
-    font-size: 30px;
-    height: 350px;
-    width: 350px;
 
-  }
-  
+
+
+
+.card {
+    
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+
   
