@@ -7,48 +7,50 @@
 </head>
 
 <body class="Lost_Form">
-    <div class="row mt-5">
-        <div class="col-md-6 m-auto">
-            <div class="card card-body">
-                <h1 class="text-center mb-3">I Lost Something</h1>
-                <%-include('./partials/messages')%>
-                <form action="/lost-form" method="POST">
-                    <div class="item_name">
-                        <label for="item_name1">Item Name</label>
-                        <input type="name" name='name' class="form-control" id="name"
-                            value="<%= typeof name != 'undefined' ? name : '' %>" />
-                    </div>
-                    <br>
-                    <div class="item_type">
-                        <label for="item_type1">Item Type</label>
-                        <input type="type" name='type' class="form-control" id='type'
-                            value="<%= typeof type != 'undefined' ? type : '' %>" />
-                    </div>
-                    <br>
-                    <div class="about_item">
-                        <label for="About_item1">About Item</label>
-                        <input type="about" name='about' class="form-control" id="about"
-                            value="<%= typeof about != 'undefined' ? about : '' %>" />
-                    </div>
-                    <div class="image_btn">
-                        <input type="file"  name="file" id="file" accept="image/*" onchange="previewImage();">
-                        <label for="file"> 
-                            <i class="material-icons">
-                                add_photo_alternate</i>&nbsp;
-                         </label>
-                         <img id="preview">
-                         </div>
-                    <div class="lost_item">
-                        <label for="lost_item1">Where Did You Lose The Item?</label>
-                        <input type="where" name='where' class="form-control" id="where"
-                            value="<%= typeof where != 'undefined' ? where : '' %>" />
-                    </div>
-                    <br>
-                    <button type="button" class="sub_btn btn-lg">SUBMIT</button>               
-                 </form>
-            </div>
-        </div>
+  <div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">I Lost Something</h1>
+        <%-include('./partials/messages')%>
+        <form action="/lost-form" method="POST">
+          <div class="item_name">
+            <label for="item_name1">Item Name</label>
+            <input type="name" name='name' class="form-control" id="name"
+              value="<%= typeof name != 'undefined' ? name : '' %>" />
+          </div>
+          <br>
+          <div class="item_type">
+            <label for="item_type1">Item Type</label>
+            <input type="type" name='type' class="form-control" id='type'
+              value="<%= typeof type != 'undefined' ? type : '' %>" />
+          </div>
+          <br>
+          <div class="about_item">
+            <label for="About_item1">About Item</label>
+            <input type="about" name='about' class="form-control" id="about"
+              value="<%= typeof about != 'undefined' ? about : '' %>" />
+          </div>
+          <div class="image_btn">
+            <input type="file" name="file" id="file" accept="image/*" onchange="previewImage();">
+            <label for="file">
+              <i class="material-icons">
+                add_photo_alternate</i>&nbsp;
+            </label>
+            <img id="preview">
+          </div>
+          <div class="lost_item">
+            <label for="lost_item1">Where Did You Lose The Item?</label>
+            <input type="where" name='where' class="form-control" id="where"
+              value="<%= typeof where != 'undefined' ? where : '' %>" />
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary btn-block">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
+  </div>
   </div>
   <script>
     function previewImage() {

@@ -21,22 +21,26 @@ router.get('/found-form', (req, res) => {
 
 router.post('/found-form', (req, res) => {
   var status = true;
+  var completed = false;
   const {
     name,
     type,
     about,
-    where,
+    where
   } = req.body;
-  const productImage = req.file
   let errors = [];
+  if (!name || !type || !about || !where) {
+    errors.push({
+      msg: 'Please enter all fields'
+    });
+  }
 
   if (errors.length > 0) {
     res.render('found-form', {
       name,
       type,
       about,
-      where,
-      productImage
+      where
     });
   } else {
     const newItem = new Item({
@@ -45,10 +49,10 @@ router.post('/found-form', (req, res) => {
       about,
       where,
       status,
-      completed,
-      productImage
+      completed
     });
     newItem.save().then(user => {
+      req.flash('success_msg', 'Your item has been posted');
       res.redirect('/found');
     });
   }
@@ -65,22 +69,22 @@ router.post('/lost-form', (req, res) => {
     name,
     type,
     about,
-    where,
-    user,
-    contact,
-    email
+    where
   } = req.body;
   let errors = [];
 
+  if (!name || !type || !about || !where) {
+    errors.push({
+      msg: 'Please enter all fields'
+    });
+  }
   if (errors.length > 0) {
     res.render('lost-form', {
+      errors,
       name,
       type,
       about,
-      where,
-      user,
-      contact,
-      email
+      where
     });
   } else {
     const newItem = new Item({
@@ -91,8 +95,9 @@ router.post('/lost-form', (req, res) => {
       status,
       completed
     });
-    console.log(newItem);
+
     newItem.save().then(item => {
+      req.flash('success_msg', 'Your item has been successfully posted');
       res.redirect('/lost');
     });
   }
@@ -171,10 +176,14 @@ router.post('/register', (req, res) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
             newUser.password = hash;
-            console.log(newUser)
+            console.log(newUser);
             newUser
               .save()
               .then(user => {
+                req.flash(
+                  'success_msg',
+                  'You are now registered and can log in'
+                );
                 res.redirect('/login');
               })
               .catch(err => console.log(err));
@@ -193,7 +202,7 @@ router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
-    failureFlash: false
+    failureFlash: true
   })(req, res, next);
 });
 
