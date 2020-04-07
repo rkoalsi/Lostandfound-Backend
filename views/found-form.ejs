@@ -8,25 +8,34 @@
 </head>
 
 <body class="Found_Form">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class=" navbar-brand">Lost and Found</a>
+        <form class="form-inline">
+            <a href="/" class="btn btn-outline-info my-2 my-sm-0" type="submit">Home</a>
+            <a href="/lost-form" class="btn btn-outline-info my-2 my-sm-0" type="submit">Lost Form</a>
+            <a href="/register" class="btn btn-outline-info my-2 my-sm-0" type="submit">Contact Us</a>
+
+        </form>
+    </nav>
     <div class="row mt-5">
         <div class="col-md-6 m-auto">
-            <div class="card card-body">
+            <div class="card_body card-body">
                 <h1 class="text-center mb-3">I Found Something</h1>
                 <%-include('./partials/messages')%>
-                <form action="/found-form" method="POST" enctype="multipart/form-data">
-                    <div class="item_name">
+                <form action="/found-form" method="POST">
+                    <div class="Item_style">
                         <label for="item_name1">Item Name</label>
                         <input type="name" name='name' class="form-control" id="name"
                             value="<%= typeof name != 'undefined' ? name : '' %>" />
                     </div>
                     <br>
-                    <div class="item_type">
+                    <div class="Item_style">
                         <label for="item_type1">Item Type</label>
                         <input type="type" name='type' class="form-control" id='type'
                             value="<%= typeof type != 'undefined' ? type : '' %>" />
                     </div>
                     <br>
-                    <div class="about_item">
+                    <div class="Item_style">
                         <label for="About_item1">About Item</label>
                         <input type="about" name='about' class="form-control" id="about"
                             value="<%= typeof about != 'undefined' ? about : '' %>" />
@@ -40,13 +49,13 @@
                         <img id="preview">
                     </div>
                     <br>
-                    <div class="found_item">
+                    <div class="Item_style">
                         <label for="found_item1">Where Did You Find The Item</label>
                         <input type="where" name='where' class="form-control" id="where"
                             value="<%= typeof where != 'undefined' ? where : '' %>" />
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary btn-block">
+                    <button type="submit" class="btn btn-info btn-block">
                         Submit
                     </button>
                 </form>

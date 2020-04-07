@@ -1,115 +1,119 @@
+.body {
+  width: 100%;
+  height: 100%;
+  color: black;
+  background: linear-gradient(-45deg, #037deec9, #013583, #43639e, #112424);
+  background-size: 400% 400%;
+  position: relative;
+  animation: change 6s ease-in-out infinite;
+}
 
-body {
-    background: linear-gradient(to right, #0099cc 17%, #ffff99 100%);
+@keyframes change {
+  0% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
 }
 
 .navbar-brand {
-    display: inline-block;
-    padding-top: .3125rem;
-    padding-bottom: .3125rem;
-    margin-right: 1rem;
-    font-size: 25rem;
-    line-height: inherit;
-    white-space: nowrap;
-   font-family: 'IM Fell French Canon SC', serif;
-   
-  }
-  
-  
+  display: inline-block;
+  padding-top: .3125rem;
+  padding-bottom: .3125rem;
+  margin-right: 1rem;
+  font-size: 25rem;
+  line-height: inherit;
+  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
 
-  /* NAVBAR BUTTON  */
-  .btn {
-    display: inline-block;
-    font-weight: 400;
-    color: #ffffff;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .95rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    margin-right: 10px; 
-  }
-  
- 
-  /* NAVBAR BACKGROUNF */
-  .bg-light {
-    background-color: #f8f9fa!important;
-    background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,241,241,1) 0%);
-  
-  }
-  
-  .button {
-      display: inline-block;
-      border-radius: 20px;
-      /* background-color:lightpink; */
-      border: none;
-      color: white;
-      text-align: center;
-      font-size: 28px;
-      padding: 20px;
-      width:200px;
-      transition: all 0.5s;
-      cursor: pointer;
-      /* margin-left: 50px; */
-      background: linear-gradient(to right, #0099cc 17%, #ffff99 100%);
-       }
-    
-    .button span {
-      cursor: pointer;
-      display: inline-block;
-      position: relative;
-      transition: 0.5s;
-    }
-    
-    .button span:after {
-      content: '\00bb';
-      position: absolute;
-      opacity: 0;
-      top: 0;
-      right: -20px;
-      transition: 0.5s;
-    }
-    
-    .button:hover span {
-      padding-right: 25px;
-    }
-    
-    .button:hover span:after {
-      opacity: 1;
-      right: 0;
-    }
+}
 
-    
-  
-    
-    
-    
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  .p1 {
-    font-size: 22px;
-    text-align: center;
-    font-family: 'IBM Plex Sans Condensed', sans-serif;
-    /* margin: 5px;
+
+
+/* NAVBAR BUTTON  */
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .95rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  margin-right: 10px;
+}
+
+
+/* NAVBAR BACKGROUNF */
+.bg-light {
+  background-color: #f8f9fa !important;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(241, 241, 241, 1) 0%);
+
+}
+
+.button {
+  display: inline-block;
+  border-radius: 20px;
+  /* background-color:lightpink; */
+  border: none;
+  color: whitesmoke;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  /* margin-left: 50px; */
+  background: lightslategray;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.p1 {
+  font-size: 22px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: whitesmoke;
+  /* margin: 5px;
   margin-top: 15px; */
-    
-  }
-  
+
+}
