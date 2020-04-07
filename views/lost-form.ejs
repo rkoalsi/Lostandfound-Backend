@@ -1,67 +1,89 @@
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/lost-form.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
+<%-include('./partials/messages')%>
 
 <body class="Lost_Form">
+  <nav class="navbar navbar-dark bg-dark">
+      <a class=" navbar-brand">Lost and Found</a>
+      <form class="form-inline">
+
+
+          <a href="/index" class="btn btn-outline-info my-2 my-sm-0" type="submit">Home</a>
+          <a href="/found-form" class="btn btn-outline-info my-2 my-sm-0" type="submit">Found Form</a>
+          <a href="/register" class="btn btn-outline-info my-2 my-sm-0" type="submit">Contact Us</a>
+
+      </form>
+  </nav>
   <div class="row mt-5">
-    <div class="col-md-6 m-auto">
-      <div class="card card-body">
-        <h1 class="text-center mb-3">I Lost Something</h1>
-        <%-include('./partials/messages')%>
-        <form action="/lost-form" method="POST">
-          <div class="item_name">
-            <label for="item_name1">Item Name</label>
-            <input type="name" name='name' class="form-control" id="name"
-              value="<%= typeof name != 'undefined' ? name : '' %>" />
+      <div class="col-md-6 m-auto">
+          <div class="card_body card-body">
+              <h1 class="text-center mb-3">I Lost Something</h1>
+              <%-include('./partials/messages')%>
+              <form action="/found-form" method="POST">
+                  <div class="Item_style">
+                      <label for="item_name1">Item Name</label>
+                      <input type="name" name='name' class="form-control" id="name"
+                          value="<%= typeof name != 'undefined' ? name : '' %>" />
+                  </div>
+                  <br>
+                  <div class="Item_style">
+                      <label for="item_type1">Item Type</label>
+                      <select type="type" name='type' class="form-control" id='type'
+                      value="<%= typeof type != 'undefined' ? type : '' %>">
+                       <option selected>Choose...</option>
+                        <option value="1">Electronics</option>
+                        <option value="2">Accessories</option>
+                        <option value="3">Personal Documents</option>
+                        <option value="4">Pets</option>
+
+                      </select>
+                          
+                  </div>
+                  <br>
+                  <div class="Item_style">
+                      <label for="About_item1">About Item</label>
+                      <input type="about" name='about' class="form-control" id="about"
+                          value="<%= typeof about != 'undefined' ? about : '' %>" />
+                  </div>
+                  <div class="image_btn">
+                      <input type="file" name="file" id="file" accept="image/*" onchange="previewImage();">
+                      <label for="file">
+                          <i class="material-icons">
+                              add_photo_alternate</i>&nbsp;
+                      </label>
+                      <img id="preview">
+                  </div>
+                  <br>
+                  <div class="Item_style">
+                      <label for="found_item1">Where Did You Lose The Item</label>
+                      <input type="where" name='where' class="form-control" id="where"
+                          value="<%= typeof where != 'undefined' ? where : '' %>" />
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-info btn-block">
+                      Submit
+                  </button>
+              </form>
           </div>
-          <br>
-          <div class="item_type">
-            <label for="item_type1">Item Type</label>
-            <input type="type" name='type' class="form-control" id='type'
-              value="<%= typeof type != 'undefined' ? type : '' %>" />
-          </div>
-          <br>
-          <div class="about_item">
-            <label for="About_item1">About Item</label>
-            <input type="about" name='about' class="form-control" id="about"
-              value="<%= typeof about != 'undefined' ? about : '' %>" />
-          </div>
-          <div class="image_btn">
-            <input type="file" name="file" id="file" accept="image/*" onchange="previewImage();">
-            <label for="file">
-              <i class="material-icons">
-                add_photo_alternate</i>&nbsp;
-            </label>
-            <img id="preview">
-          </div>
-          <div class="lost_item">
-            <label for="lost_item1">Where Did You Lose The Item?</label>
-            <input type="where" name='where' class="form-control" id="where"
-              value="<%= typeof where != 'undefined' ? where : '' %>" />
-          </div>
-          <br>
-          <button type="submit" class="btn btn-primary btn-block">
-            Submit
-          </button>
-        </form>
       </div>
-    </div>
-  </div>
   </div>
   <script>
-    function previewImage() {
-      var file = document.getElementById("file").files;
-      if (file.length > 0) {
-        var fileReader = new FileReader();
-        fileReader.onload = function (event) {
-          document.getElementById("preview").setAttribute("src", event.target.result);
-        };
-        fileReader.readAsDataURL(file[0])
+      function previewImage() {
+          var file = document.getElementById("file").files;
+          if (file.length > 0) {
+              var fileReader = new FileReader();
+
+              fileReader.onload = function (event) {
+                  document.getElementById("preview").setAttribute("src", event.target.result);
+              };
+              fileReader.readAsDataURL(file[0])
+          }
       }
-    }
   </script>
 </body>
