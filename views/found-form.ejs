@@ -13,7 +13,7 @@
             <div class="card card-body">
                 <h1 class="text-center mb-3">I Found Something</h1>
                 <%-include('./partials/messages')%>
-                <form action="/found-form" method="POST">
+                <form action="/found-form" method="POST" enctype="multipart/form-data">
                     <div class="item_name">
                         <label for="item_name1">Item Name</label>
                         <input type="name" name='name' class="form-control" id="name"

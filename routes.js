@@ -5,10 +5,20 @@ const User = require('./models/User');
 const Item = require('./models/Item');
 const passport = require('passport');
 const {
+  getReadUrl,
+  getSignedUrl,
+  uploadBuffer
+} = require('./config/aws');
+const {
   forwardAuthenticated,
   ensureAuthenticated
 } = require('./config/auth');
-
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, getReadUrl)
+  }
+})
 router.get('/', (req, res) => {
   res.render('index');
 });
@@ -28,6 +38,7 @@ router.post('/found-form', (req, res) => {
     about,
     where
   } = req.body;
+  const image = req.file;
   let errors = [];
   if (!name || !type || !about || !where) {
     errors.push({
@@ -40,6 +51,7 @@ router.post('/found-form', (req, res) => {
       name,
       type,
       about,
+      image,
       where
     });
   } else {
@@ -48,10 +60,15 @@ router.post('/found-form', (req, res) => {
       type,
       about,
       where,
+      image,
       status,
       completed
     });
+    console.log(image)
     newItem.save().then(user => {
+      uploadBuffer(image, {
+        name: newItem._id
+      })
       req.flash('success_msg', 'Your item has been posted');
       res.redirect('/found');
     });
