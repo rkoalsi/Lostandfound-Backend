@@ -67,7 +67,7 @@ router.post('/found-form', upload.single('image'), (req, res) => {
       status,
       completed
     });
-    console.log(image)
+    // console.log(image)
     newItem.save().then(user => {
       uploadBuffer(image, {
         name: newItem._id
@@ -85,11 +85,11 @@ router.get('/lost-form', (req, res) => {
 router.post('/lost-form', upload.single('image'), (req, res) => {
   var status, completed;
   status = completed = false;
-
   const {
     name,
     type,
     about,
+    image,
     where
   } = req.body;
   let errors = [];
@@ -104,6 +104,7 @@ router.post('/lost-form', upload.single('image'), (req, res) => {
       errors,
       name,
       type,
+      image,
       about,
       where
     });
@@ -113,16 +114,20 @@ router.post('/lost-form', upload.single('image'), (req, res) => {
       about,
       type,
       where,
+      image,
       status,
       completed
     });
+    // console.log(image)
     newItem.save().then(user => {
+      uploadBuffer(image, {
+        name: newItem._id
+      })
       req.flash('success_msg', 'Your item has been posted');
-      res.redirect('/found');
+      res.redirect('/lost');
     });
   }
-});
-
+})
 router.get('/lost', (req, res) => {
   res.render('lost-item');
 });
@@ -242,4 +247,4 @@ router.get('/single-found', (req, res) => {
   res.render('single-found');
 });
 
-module.exports = router;
+module.exports = router
