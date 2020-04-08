@@ -1,5 +1,6 @@
 body {
-    background: linear-gradient(to right, #0099cc 17%, #ffff99 100%);
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(160,187,186,1) 0%);
 }
 
 .navbar-brand {
@@ -42,9 +43,10 @@ body {
       margin-left: auto;
       margin-right: auto;
       
+      
   }
 
   h1 {
      text-align: center;
-     font-family: 'Gotu', sans-serif;
+     font-family: 'Vollkorn', serif;
   }
