@@ -13,15 +13,15 @@ const {
   forwardAuthenticated,
   ensureAuthenticated
 } = require('./config/auth');
-const multer = require('multer');
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, getSignedUrl)
-  }
-})
-var upload = multer({
-  storage: storage
-})
+// const multer = require('multer');
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, getSignedUrl)
+//   }
+// })
+// var upload = multer({
+//   storage: storage
+// })
 router.get('/', (req, res) => {
   res.render('index');
 });
@@ -32,7 +32,7 @@ router.get('/found-form', (req, res) => {
   res.render('found-form');
 });
 
-router.post('/found-form', upload.single('image'), (req, res) => {
+router.post('/found-form', (req, res) => {
   var status = true;
   var completed = false;
   const {
@@ -51,6 +51,7 @@ router.post('/found-form', upload.single('image'), (req, res) => {
 
   if (errors.length > 0) {
     res.render('found-form', {
+      errors,
       name,
       type,
       about,
@@ -67,7 +68,6 @@ router.post('/found-form', upload.single('image'), (req, res) => {
       status,
       completed
     });
-    // console.log(image)
     newItem.save().then(user => {
       uploadBuffer(image, {
         name: newItem._id
@@ -82,7 +82,7 @@ router.get('/lost-form', (req, res) => {
   res.render('lost-form');
 });
 
-router.post('/lost-form', upload.single('image'), (req, res) => {
+router.post('/lost-form', (req, res) => {
   var status, completed;
   status = completed = false;
   const {
@@ -92,6 +92,7 @@ router.post('/lost-form', upload.single('image'), (req, res) => {
     image,
     where
   } = req.body;
+
   let errors = [];
 
   if (!name || !type || !about || !where) {
@@ -118,7 +119,7 @@ router.post('/lost-form', upload.single('image'), (req, res) => {
       status,
       completed
     });
-    // console.log(image)
+    console.dir(req.body.image)
     newItem.save().then(user => {
       uploadBuffer(image, {
         name: newItem._id

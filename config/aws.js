@@ -30,7 +30,7 @@ const getSignedUrl = fileName => {
 
 const uploadBuffer = async (buffer, options = {}) => {
     const {
-        name
+        name,
     } = options;
     const params = {
         ACL: 'public-read',
@@ -39,13 +39,14 @@ const uploadBuffer = async (buffer, options = {}) => {
         Body: buffer
     };
     return new Promise((resolve, reject) => {
-        s3.putObject(params, err => {
-            if (err) reject(err);
-            else resolve(getReadUrl(name));
+        s3.putObject(params, function (err, data) {
+            if (err) reject(err)
+            else {
+                resolve(console.log(data));
+            };
         });
     });
-};
-
+}
 module.exports = {
     getReadUrl,
     getSignedUrl,
