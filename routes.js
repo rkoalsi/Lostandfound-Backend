@@ -16,8 +16,11 @@ const {
 const multer = require('multer');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, getReadUrl)
+    cb(null, getSignedUrl)
   }
+})
+var upload = multer({
+  storage: storage
 })
 router.get('/', (req, res) => {
   res.render('index');
@@ -29,16 +32,16 @@ router.get('/found-form', (req, res) => {
   res.render('found-form');
 });
 
-router.post('/found-form', (req, res) => {
+router.post('/found-form', upload.single('image'), (req, res) => {
   var status = true;
   var completed = false;
   const {
     name,
     type,
     about,
+    image,
     where
   } = req.body;
-  const image = req.file;
   let errors = [];
   if (!name || !type || !about || !where) {
     errors.push({
@@ -79,7 +82,7 @@ router.get('/lost-form', (req, res) => {
   res.render('lost-form');
 });
 
-router.post('/lost-form', (req, res) => {
+router.post('/lost-form', upload.single('image'), (req, res) => {
   var status, completed;
   status = completed = false;
 
