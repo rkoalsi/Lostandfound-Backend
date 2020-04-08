@@ -5,10 +5,23 @@ const User = require('./models/User');
 const Item = require('./models/Item');
 const passport = require('passport');
 const {
+  getReadUrl,
+  getSignedUrl,
+  uploadBuffer
+} = require('./config/aws');
+const {
   forwardAuthenticated,
   ensureAuthenticated
 } = require('./config/auth');
-
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, getSignedUrl)
+  }
+})
+var upload = multer({
+  storage: storage
+})
 router.get('/', (req, res) => {
   res.render('index');
 });
@@ -19,13 +32,14 @@ router.get('/found-form', (req, res) => {
   res.render('found-form');
 });
 
-router.post('/found-form', (req, res) => {
+router.post('/found-form', upload.single('image'), (req, res) => {
   var status = true;
   var completed = false;
   const {
     name,
     type,
     about,
+    image,
     where
   } = req.body;
   let errors = [];
@@ -40,6 +54,7 @@ router.post('/found-form', (req, res) => {
       name,
       type,
       about,
+      image,
       where
     });
   } else {
@@ -48,10 +63,15 @@ router.post('/found-form', (req, res) => {
       type,
       about,
       where,
+      image,
       status,
       completed
     });
+    // console.log(image)
     newItem.save().then(user => {
+      uploadBuffer(image, {
+        name: newItem._id
+      })
       req.flash('success_msg', 'Your item has been posted');
       res.redirect('/found');
     });
@@ -62,14 +82,14 @@ router.get('/lost-form', (req, res) => {
   res.render('lost-form');
 });
 
-router.post('/lost-form', (req, res) => {
+router.post('/lost-form', upload.single('image'), (req, res) => {
   var status, completed;
   status = completed = false;
-
   const {
     name,
     type,
     about,
+    image,
     where
   } = req.body;
   let errors = [];
@@ -84,6 +104,7 @@ router.post('/lost-form', (req, res) => {
       errors,
       name,
       type,
+      image,
       about,
       where
     });
@@ -93,16 +114,20 @@ router.post('/lost-form', (req, res) => {
       about,
       type,
       where,
+      image,
       status,
       completed
     });
+    // console.log(image)
     newItem.save().then(user => {
+      uploadBuffer(image, {
+        name: newItem._id
+      })
       req.flash('success_msg', 'Your item has been posted');
-      res.redirect('/found');
+      res.redirect('/lost');
     });
   }
-});
-
+})
 router.get('/lost', (req, res) => {
   res.render('lost-item');
 });
@@ -222,4 +247,4 @@ router.get('/single-found', (req, res) => {
   res.render('single-found');
 });
 
-module.exports = router;
+module.exports = router

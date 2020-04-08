@@ -1,0 +1,50 @@
+body {
+    background: linear-gradient(to right, #0099cc 17%, #ffff99 100%);
+}
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 25rem;
+    line-height: inherit;
+    white-space: nowrap;
+   font-family: 'IM Fell French Canon SC', serif;
+   
+  }
+  
+  
+
+  /* NAVBAR BUTTON  */
+  .btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .95rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-right: 10px; 
+  }
+
+  .card {
+      margin-left: auto;
+      margin-right: auto;
+      
+  }
+
+  h1 {
+     text-align: center;
+     font-family: 'Gotu', sans-serif;
+  }
