@@ -32,6 +32,7 @@ const uploadBuffer = async (buffer, options = {}) => {
     const {
         name,
     } = options;
+    console.log(bucket, options)
     const params = {
         ACL: 'public-read',
         Bucket: bucket,

@@ -22,6 +22,12 @@ const {
 // var upload = multer({
 //   storage: storage
 // })
+
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+
 router.get('/', (req, res) => {
   res.render('index');
 });
@@ -82,8 +88,8 @@ router.get('/lost-form', (req, res) => {
   res.render('lost-form');
 });
 
-router.post('/lost-form', (req, res) => {
-  var status, completed;
+router.post('/lost-form', upload.single('image'), (req, res) => {
+  let status, completed;
   status = completed = false;
   const {
     name,
@@ -120,9 +126,16 @@ router.post('/lost-form', (req, res) => {
       completed
     });
     console.dir(req.body.image)
+
+    // the logic here cound be better 
+    // use the following steps 
+    // 1. Make a new item document
+    // 2. Upload the file and get the url 
+    // 3. Update the item document, with the uploaded url
     newItem.save().then(user => {
-      uploadBuffer(image, {
-        name: newItem._id
+      uploadBuffer(req.file.buffer, {
+        // .toString() to convert id to strings
+        name: newItem._id.toString()
       })
       req.flash('success_msg', 'Your item has been posted');
       res.redirect('/lost');
