@@ -31,9 +31,16 @@
                     <br>
                     <div class="Item_style">
                         <label for="item_type1">Item Type</label>
-                        <input type="type" name='type' class="form-control" id='type'
-                            value="<%= typeof type != 'undefined' ? type : '' %>" />
-                    </div>
+                        <select type="type" name='type' class="form-control" id='type' value="">
+                          <option selected>Choose...</option>
+                          <option value='Electronics'>Electronics</option>
+                          <option value='Accessories'>Accessories</option>
+                          <option value='Personal Documents'>Personal Documents</option>
+                          <option value='Pets'>Pets</option>
+            
+                        </select>
+            
+                      </div>
                     <br>
                     <div class="Item_style">
                         <label for="About_item1">About Item</label>

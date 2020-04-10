@@ -1,15 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Individual Found Item Page</title>
-</head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/single-found.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  </head>
+  <%-include('./partials/messages')%>
+  
+  <body class="Lost_Form">
+    <nav class="navbar navbar-dark bg-dark">
+      <a class=" navbar-brand">Lost and Found</a>
+      <form class="form-inline">
+  
+  
+        <a href="/" class="btn btn-outline-info my-2 my-sm-0" type="submit">Home</a>
+        <a href="/found-form" class="btn btn-outline-info my-2 my-sm-0" type="submit">Found Form</a>
+        <a href="/register" class="btn btn-outline-info my-2 my-sm-0" type="submit">Contact Us</a>
+  
+      </form>
+    </nav>
+    <br>
+    <h1 class="heading">Found Item</h1>
+    <br>
 
-<body>
-    Hello World
-</body>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <img class="card-img-top" src="/images/airpods.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Airpods Pro</h5>
+                    <p class="card-text">White Apple Airpods</p>
+                    <!-- <p class="card-text"><small class="text-muted">Last updated 29 mins ago</small></p> -->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-muted">Moosa Khan</li>
+                        <li class="list-group-item text-muted">+91 9967340011</li>
+                        <li class="list-group-item text-muted">Moosa@airpods.com</li>
+                        <li class="list-group-item text-muted">These were found in Lokhandwala,Andheri(W)</li>
+                      </ul>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 
-</html>
+</div>
+     
+  </body>
