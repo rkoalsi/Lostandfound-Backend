@@ -1,5 +1,6 @@
 body {
-  background: linear-gradient(to bottom, #0099cc 17%, #ffff99 100%);
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(39,116,184,1) 0%);
 }
 
 
@@ -51,5 +52,11 @@ background-color: black;
     
 }
 
+.card-text {
+  color: cornflowerblue;
+}
 
+.card-title {
+  color: darkblue;
+}
   
