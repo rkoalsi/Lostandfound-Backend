@@ -19,7 +19,6 @@ const getSignedUrl = fileName => {
         Bucket: bucket,
         Key: fileName,
         Expires: expiry,
-        Body: buffer
     };
     const urls = {
         writeUrl: s3.getSignedUrl('putObject', params),
@@ -31,19 +30,20 @@ const getSignedUrl = fileName => {
 const uploadBuffer = async (buffer, options = {}) => {
     const {
         name,
+        type,
     } = options;
-    console.log(bucket, options)
     const params = {
         ACL: 'public-read',
         Bucket: bucket,
         Key: name,
+        ContentType: type,
         Body: buffer
     };
     return new Promise((resolve, reject) => {
         s3.putObject(params, function (err, data) {
             if (err) reject(err)
             else {
-                resolve(console.log(data));
+                resolve(console.log(`Item has been posted`));
             };
         });
     });

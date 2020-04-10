@@ -13,31 +13,31 @@
 
 <body>
   <div class="container">
-    <% if(typeof errors != 'undefined'){ %> <% errors.forEach(function(error) { %>
+    <% if(typeof errors != 'undefined'){ %> <% errors.forEach(function(error){ %>
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
       <%= error.msg %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <button id='mybutton' type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <% }); %> <% } %> <% if(success_msg != ''){ %>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <%= success_msg %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <% }); %> <% } %> <%if(success_msg != ''){%>
+    <div id='mydiv' class="alert alert-success alert-dismissible fade show" role="alert">
+      <%=success_msg%>
+      <button id='mybutton' type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <% } %> <% if(error_msg != ''){ %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div id='mydiv' class="alert alert-danger alert-dismissible fade show" role="alert">
       <%= error_msg %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <button id='mybutton' type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <% } %> <% if(error != ''){ %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div id='mydiv' class="alert alert-danger alert-dismissible fade show" role="alert">
       <%= error %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <button id='mybutton' type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -52,6 +52,13 @@
   </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+  </script>
+  <script>
+    var fade_out = function () {
+      $("#mybutton").click()
+    }
+
+    setTimeout(fade_out, 5000);
   </script>
 </body>
 

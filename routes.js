@@ -6,26 +6,17 @@ const Item = require('./models/Item');
 const passport = require('passport');
 const {
   getReadUrl,
-  getSignedUrl,
   uploadBuffer
 } = require('./config/aws');
 const {
   forwardAuthenticated,
   ensureAuthenticated
 } = require('./config/auth');
-// const multer = require('multer');
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, getSignedUrl)
-//   }
-// })
-// var upload = multer({
-//   storage: storage
-// })
-
 const multer = require('multer');
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage
+});
 
 
 router.get('/', (req, res) => {
@@ -38,7 +29,7 @@ router.get('/found-form', (req, res) => {
   res.render('found-form');
 });
 
-router.post('/found-form', (req, res) => {
+router.post('/found-form', upload.single('image'), (req, res) => {
   var status = true;
   var completed = false;
   const {
@@ -75,12 +66,17 @@ router.post('/found-form', (req, res) => {
       completed
     });
     newItem.save().then(user => {
+      const name = newItem._id.toString() + '.jpg'
+      const url = getReadUrl(name)
       uploadBuffer(image, {
-        name: newItem._id
+        name
+      }).then(resUpload => {
+        user.image = url
+        user.save()
       })
       req.flash('success_msg', 'Your item has been posted');
       res.redirect('/found');
-    });
+    })
   }
 });
 
@@ -125,21 +121,19 @@ router.post('/lost-form', upload.single('image'), (req, res) => {
       status,
       completed
     });
-    console.dir(req.body.image)
-
-    // the logic here cound be better 
-    // use the following steps 
-    // 1. Make a new item document
-    // 2. Upload the file and get the url 
-    // 3. Update the item document, with the uploaded url
     newItem.save().then(user => {
+      const name = newItem._id.toString() + '.jpg'
+      const url = getReadUrl(name)
       uploadBuffer(req.file.buffer, {
-        // .toString() to convert id to strings
-        name: newItem._id.toString()
-      })
+          name
+        })
+        .then(resUpload => {
+          user.image = url;
+          user.save()
+        });
       req.flash('success_msg', 'Your item has been posted');
       res.redirect('/lost');
-    });
+    })
   }
 })
 router.get('/lost', (req, res) => {
@@ -243,6 +237,12 @@ router.post('/login', (req, res, next) => {
     failureRedirect: '/login',
     failureFlash: true
   })(req, res, next);
+});
+
+router.get('/logout', (req, res) => {
+  req.logout();
+  req.flash('success_msg', 'You have been successfully logged out');
+  res.redirect('/login');
 });
 
 router.get('/found-item', (req, res) => {
