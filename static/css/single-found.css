@@ -1,6 +1,6 @@
   .Lost_Form {
     width: 100%;
-    height: 100%;
+    height: 2000px;
     color: black;
     background: linear-gradient(-45deg, #09d3f7, #013583,#43639e, #112424);
     background-size: 400% 400%;
@@ -66,13 +66,91 @@
   
   }
 
-  .card-body {
-    font-family: 'Montserrat', sans-serif; 
-    background: transparent;
+  .heading{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+text-align: center;  
+font-size:50px;
+}
+  .item_img1{
+    height: 600px;
+    width: 1100px;
+    margin-left: -45px;
+  }
+  .item_des{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    margin-top: 60px;
+    text-align:center;
+  }
+  .something{
+    height: 800px;
+  }
+  .found_info{
+    font-family: 'Montserrat', sans-serif;  
+    text-align: center;
+    font-size: 80px;
+    margin-top: 80px;
+    color: white;
+  }
+  
+  .name_info{
+    font-family: 'Montserrat', sans-serif;  
+    text-align: center;
+    font-size: 50px;
+    margin-top: 100px;
+    color: white;
+  }
+  .email_info{
+    font-family: 'Montserrat', sans-serif;  
+    text-align: center;
+    font-size: 50px;
+    margin-top: 102px;
+    color: white;
+  }
+  .number_info{
+    font-family: 'Montserrat', sans-serif;  
+    text-align: center;
+    font-size: 50px;
+    margin-top: 104px;
+    color: white;
+  }
+  .location_info{
+    font-family: 'Montserrat', sans-serif;  
+    text-align: center;
+    font-size: 50px;
+    margin-top: 106px;
+    color: white;
+
   }
 
- .heading{
-   text-align: center;
-   font-family: 'Montserrat', sans-serif; 
-   color: white;
-}
+  .claim_btn{
+    margin-left: 470px;
+    margin-top: 130px;
+    background-color: rgb(238, 56, 56);
+    border: black 2px solid;
+    height: 50px;
+    width: 90px;
+    font-family: 'Montserrat', sans-serif;  
+
+  }
+  .claim_btn:hover{
+    background-color: red;
+  }
+  .empty{
+    height: 100px;
+  }
+  .ending{
+    height: 100px;
+    width:2000px;
+    background-color: black;
+    margin-left: -260px;
+    position: absolute;
+  }
+  .ending_text{
+    color: #ffffff;  
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 40px;
+    margin-left: 20px;
+  }
