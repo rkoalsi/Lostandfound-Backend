@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <l  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600&display=swap" rel="stylesheet">
 </head>
 
@@ -15,17 +15,13 @@
   <nav class="navbar navbar-dark bg-dark">
     <a class=" navbar-brand">Lost and Found</a>
     <form class="form-inline">
-
-
       <a href="/" class="btn btn-outline-info my-2 my-sm-0" type="submit">Home</a>
       <a href="/found-form" class="btn btn-outline-info my-2 my-sm-0" type="submit">Found Form</a>
       <a href="/register" class="btn btn-outline-info my-2 my-sm-0" type="submit">Contact Us</a>
-
     </form>
   </nav>
   <h1>Found Item</h1>
             <br>
-
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
@@ -43,31 +39,34 @@
                                 <li class="list-group-item text-muted">moosak@airpods.com</li>
                               </ul>
                             </div>
-                    
                     </div>
                     <p class="claim_text">If the item shown above is your's then fill the form below to claim it</p>
                     <br>
-                   <div class="claim_info">
-                     <form>
-                    <label for="claim_name">Name</label>
-            <input type="name" name='name' class="form-control" id="name" placeholder="Enter Name"
-              value="<%= typeof name != 'undefined' ? name : '' %>" />
-              <br>
-              <label for="claim_number">Mobile No.</label>
-            <input type="number" name='number' class="form-control" id="number" placeholder="Enter Mobile no."
-              value="<%= typeof number != 'undefined' ? number : '' %>" />
-              </form>
-              </div>
+                    <%-include('./partials/messages')%>
+                     <form action="/single-found" method="POST">
+                    <div class='claim_info_name'>
+                      <label for="claim_name">Name</label>
+                      <input type="name" name="name" class="form-control" id="name"
+                      value="<%= typeof name != 'undefined' ? name : '' %>" />
+                      </div>
+                      <br>
+                      <div class="claim_info_number">
+                      <label for="claim_number">Mobile No.</label>
+                      <input type="number" name="number" class="form-control" id="number"
+                      value="<%= typeof number != 'undefined' ? number : '' %>" />
+              
+                      </div>
               
                     
-                </div>
-                <div class="col-md-2"></div>
-                <button type="button" class="claim_btn">CLAIM!</button>
+                      </div>
+                          <div class="col-md-2"></div>
+                    <button type="submit" class="claim_btn">CLAIM!</button>
+              </form>
             </div>
             <div class="empty"></div>
             </div>
             <div class="end_txt"></div>
-           
+         
 
  
 

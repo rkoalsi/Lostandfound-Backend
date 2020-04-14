@@ -3,21 +3,15 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('./models/User');
 const Item = require('./models/Item');
+const Claim = require('./models/Claim');
 const passport = require('passport');
-const {
-  getReadUrl,
-  uploadBuffer
-} = require('./config/aws');
-const {
-  forwardAuthenticated,
-  ensureAuthenticated
-} = require('./config/auth');
+const { getReadUrl, uploadBuffer } = require('./config/aws');
+const { forwardAuthenticated, ensureAuthenticated } = require('./config/auth');
 const multer = require('multer');
 const storage = multer.memoryStorage();
 const upload = multer({
   storage: storage
 });
-
 
 router.get('/', (req, res) => {
   res.render('index');
@@ -32,20 +26,13 @@ router.get('/found-form', (req, res) => {
 router.post('/found-form', upload.single('image'), (req, res) => {
   var status = true;
   var completed = false;
-  const {
-    name,
-    type,
-    about,
-    image,
-    where
-  } = req.body;
+  const { name, type, about, image, where } = req.body;
   let errors = [];
   if (!name || !type || !about || !where) {
     errors.push({
       msg: 'Please enter all fields'
     });
   }
-
   if (errors.length > 0) {
     res.render('found-form', {
       errors,
@@ -66,17 +53,17 @@ router.post('/found-form', upload.single('image'), (req, res) => {
       completed
     });
     newItem.save().then(user => {
-      const name = newItem._id.toString() + '.jpg'
-      const url = getReadUrl(name)
+      const name = newItem._id.toString() + '.jpg';
+      const url = getReadUrl(name);
       uploadBuffer(image, {
         name
       }).then(resUpload => {
-        user.image = url
-        user.save()
-      })
+        user.image = url;
+        user.save();
+      });
       req.flash('success_msg', 'Your item has been posted');
       res.redirect('/found');
-    })
+    });
   }
 });
 
@@ -87,13 +74,7 @@ router.get('/lost-form', (req, res) => {
 router.post('/lost-form', upload.single('image'), (req, res) => {
   let status, completed;
   status = completed = false;
-  const {
-    name,
-    type,
-    about,
-    image,
-    where
-  } = req.body;
+  const { name, type, about, image, where } = req.body;
 
   let errors = [];
 
@@ -122,20 +103,19 @@ router.post('/lost-form', upload.single('image'), (req, res) => {
       completed
     });
     newItem.save().then(user => {
-      const name = newItem._id.toString() + '.jpg'
-      const url = getReadUrl(name)
+      const name = newItem._id.toString() + '.jpg';
+      const url = getReadUrl(name);
       uploadBuffer(req.file.buffer, {
-          name
-        })
-        .then(resUpload => {
-          user.image = url;
-          user.save()
-        });
+        name
+      }).then(resUpload => {
+        user.image = url;
+        user.save();
+      });
       req.flash('success_msg', 'Your item has been posted');
       res.redirect('/lost');
-    })
+    });
   }
-})
+});
 router.get('/lost', (req, res) => {
   res.render('lost-item');
 });
@@ -149,12 +129,7 @@ router.get('/register', forwardAuthenticated, (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-  const {
-    name,
-    email,
-    password,
-    password2
-  } = req.body;
+  const { name, email, password, password2 } = req.body;
   let errors = [];
 
   if (!name || !email || !password || !password2) {
@@ -261,4 +236,38 @@ router.get('/single-found', (req, res) => {
   res.render('single-found');
 });
 
-module.exports = router
+router.post('/single-found', (req, res) => {
+  const { name, number } = req.body;
+  let errors = [];
+
+  if (!name || !number) {
+    errors.push({
+      msg: 'Please enter all fields'
+    });
+  }
+
+  if (number.length < 10) {
+    errors.push({
+      msg: 'Password must be at least 10 characters'
+    });
+  }
+
+  if (errors.length > 0) {
+    res.render('single-found', {
+      errors,
+      name,
+      number
+    });
+  } else {
+    const newClaim = new Claim({
+      name,
+      number
+    });
+    newClaim.save().then(user => {
+      req.flash('success_msg', 'Your claim has been submitted');
+      res.redirect('/lost');
+    });
+  }
+});
+
+module.exports = router;

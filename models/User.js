@@ -15,7 +15,6 @@ const UserSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    // this was throwing an error, there is no such method as Date().now.toString(), just use new Date(), when storing it into db it automatically gets serialized to string date
     default: new Date()
   }
 });
