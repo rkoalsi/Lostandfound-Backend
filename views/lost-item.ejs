@@ -67,22 +67,19 @@
         </div>
       </div>
       <div class="row" style="overflow:hidden">
-        <div class="col-md-3 text-center">     
-          <a href="/single-lost/<%=items.id%>" type="button"></a>
-            <%if (items.length>0){%> <%items.forEach(function(item){%>
-            <div class="card" style="width: 24rem;">
-              <img class="card-img-top" src=<%=item.image%> alt="Card image
-              cap">
-              <div class="card-body">
-                <h5 class="card-title"><%=item.name%></h5>
-                <p class="card-text"><%=item.about%></p>
-                <a href="/single-lost/<%=items.id%>" class="btn btn-info"
-                  >View Item</a
-                >
-              </div>
+        <div class="col-md-3 text-center">
+          <%if (items.length>0){%> <%items.forEach(function(item){%>
+          <div class="card" style="width: 24rem;">
+            <img class="card-img-top" src=<%=item.image%> alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%=item.name%></h5>
+              <p class="card-text"><%=item.about%></p>
+              <a href="/single-lost/<%=item.id%>" class="btn btn-info"
+                >View Item</a
+              >
             </div>
-            <% })}%>
-          </a>
+          </div>
+          <% })}%>
         </div>
       </div>
 

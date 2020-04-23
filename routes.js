@@ -228,7 +228,7 @@ router.get('/lost', (req, res) => {
 
 router.get('/single-lost/:id', (req, res) => {
   const { id } = req.params;
-  Item.findById(id).then(function(data) {
+  Item.findByIed(id).then(function(data) {
     res.render('single-lost', { item: data });
   });
 });
