@@ -66,10 +66,9 @@
           </h2>
         </div>
       </div>
-
       <div class="row" style="overflow:hidden">
-        <div class="col-md-3 text-center">
-          <a href="/single-lost/<%=items.id%>" type="button">
+        <div class="col-md-3 text-center">     
+          <a href="/single-lost/<%=items.id%>" type="button"></a>
             <%if (items.length>0){%> <%items.forEach(function(item){%>
             <div class="card" style="width: 24rem;">
               <img class="card-img-top" src=<%=item.image%> alt="Card image
