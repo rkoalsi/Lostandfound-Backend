@@ -24,26 +24,26 @@
             <br>
             <div class="row">
                 <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <div class="card mb-3">
-                        <img class="card-img-top" src="/images/airpods.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Airpods Pro</h5>
-                            <br>
-                            <p class="card-text">White Apple Airpods</p>
-                            <br>
-                            <!-- <p class="card-text"><small class="text-muted">Last updated 29 mins ago</small></p> -->
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item text-muted">Moosa Khan</li>
-                                <li class="list-group-item text-muted">+91 9967340011</li>
-                                <li class="list-group-item text-muted">moosak@airpods.com</li>
-                              </ul>
-                            </div>
+                  <div class="card mb-3">
+                    <img class="card-img-top" src=<%=item.image%> alt="Card image cap">
+                    <div class="card-body">
+                      <input type='hidden' name='item_name' value="<%=typeof item_name != 'undefined' ? item_name : item.name %>"/><h5 class="card-title"><%=item.name%></h5>
+                      <p class="card-text"><%=item.about%></p>
+                      <p class="card-text"><%=item.type%></p>
+                      <p class="card-text"><%=item.where%></p>
+                      <!-- <p class="card-text"><small class="text-muted">Last updated 29 mins ago</small></p> -->
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-muted">Mohammed Hamdan</li>
+                        <li class="list-group-item text-muted">+918879093154</li>
+                        <li class="list-group-item text-muted">hamdan@airpods.com</li>
+                      </ul>
                     </div>
+                  </div>
+                </div>
                     <p class="claim_text">If the item shown above is your's then fill the form below to claim it</p>
                     <br>
                     <%-include('./partials/messages')%>
-                     <form action="/single-found" method="POST">
+                <form action="/single-found/:id" method="POST">
                     <div class='claim_info_name'>
                       <label for="claim_name">Name</label>
                       <input type="name" name="name" class="form-control" id="name"
@@ -61,12 +61,11 @@
                       </div>
                           <div class="col-md-2"></div>
                     <button type="submit" class="claim_btn">CLAIM!</button>
-              </form>
             </div>
             <div class="empty"></div>
             </div>
             <div class="end_txt"></div>
-         
+          </form>
 
  
 

@@ -1,70 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&display=swap" rel="stylesheet">
-</head>
-
-<body class="body">
+  <body class="body">
     <nav class="navbar navbar-dark bg-dark">
-        <a class=" navbar-brand">Lost and Found</a>
-        <form class="form-inline">
-            <a href="/logout" class="btn btn-outline-info my-2 my-sm-0" type="submit">Logout</a>
-        </form>
+      <a class=" navbar-brand">Lost and Found</a>
+      <form class="form-inline">
+        <a
+          href="/logout"
+          class="btn btn-outline-info my-2 my-sm-0"
+          type="submit"
+          >Logout</a
+        >
+      </form>
     </nav>
     <div class="container-fluid">
-        <br>
-        <br>
-        <br>
-        <br> 
-        <br>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
 
-        <br>
+      <br />
 
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-4 text-center">
-                <p class="p1">If you have lost a valuable click on the button below...</p>
-                <a href="/lost-form" type="button" class="button" style="vertical-align:middle"><span>I
-                        Lost!!!</span></a>
-                        
-            </div>
-            
-            
-            <div class="col-md-4 text-center">
-                <p class="p1">If you have found a valuable click on the button below...</p>
-                <a href="/found-form" class="button" style="vertical-align:middle"><span>I Found!!! </span></a>
-                
-            </div>
-            <div class="col-md-2"></div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-
-
-
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-4"><a href='/lost-item' class="btn btn-dark btn-lg btn-block">Go to the Lost Listings Page</a>
-            </div>
-            <br>
-            <br>
-            <div class="col-md-4"><a href='/found-item' class="btn btn-dark btn-lg btn-block">Go to the Found Listings Page</a></div>
-            <div class="col-md-2"></div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4 text-center">
+          <p class="p1">
+            If you have lost a valuable click on the button below...
+          </p>
+          <a
+            href="/lost-form"
+            type="button"
+            class="button"
+            style="vertical-align:middle"
+            ><span>I Lost!!!</span></a
+          >
         </div>
 
+        <div class="col-md-4 text-center">
+          <p class="p1">
+            If you have found a valuable click on the button below...
+          </p>
+          <a href="/found-form" class="button" style="vertical-align:middle"
+            ><span>I Found!!! </span></a
+          >
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
 
-
-
-
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+          <a href="/lost" class="btn btn-dark btn-lg btn-block"
+            >Go to the Lost Listings Page</a
+          >
+        </div>
+        <br />
+        <br />
+        <div class="col-md-4">
+          <a href="/found" class="btn btn-dark btn-lg btn-block"
+            >Go to the Found Listings Page</a
+          >
+        </div>
+        <div class="col-md-2"></div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

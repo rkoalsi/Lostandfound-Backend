@@ -55,7 +55,7 @@ router.post('/found-form', upload.single('image'), (req, res) => {
     newItem.save().then(user => {
       const name = newItem._id.toString() + '.jpg';
       const url = getReadUrl(name);
-      uploadBuffer(image, {
+      uploadBuffer(req.file.buffer, {
         name
       }).then(resUpload => {
         user.image = url;
@@ -115,13 +115,6 @@ router.post('/lost-form', upload.single('image'), (req, res) => {
       res.redirect('/lost');
     });
   }
-});
-router.get('/lost', (req, res) => {
-  res.render('lost-item');
-});
-
-router.get('/found', (req, res) => {
-  res.render('found-item');
 });
 
 router.get('/register', forwardAuthenticated, (req, res) => {
@@ -184,7 +177,6 @@ router.post('/register', (req, res) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
             newUser.password = hash;
-            console.log(newUser);
             newUser
               .save()
               .then(user => {
@@ -220,24 +212,36 @@ router.get('/logout', (req, res) => {
   res.redirect('/login');
 });
 
-router.get('/found-item', (req, res) => {
-  res.render('found-item');
+router.get('/found', (req, res) => {
+  Item.find({ status: 'true' }, function(err, data) {
+    if (err) throw err;
+    res.render('found-item', { items: data });
+  });
 });
 
-router.get('/lost-item', (req, res) => {
-  res.render('lost-item');
+router.get('/lost', (req, res) => {
+  Item.find({ status: 'false' }, function(err, data) {
+    if (err) throw err;
+    res.render('lost-item', { items: data });
+  });
 });
 
-router.get('/single-lost', (req, res) => {
-  res.render('single-lost');
+router.get('/single-lost/:id', (req, res) => {
+  const { id } = req.params;
+  Item.findById(id).then(function(data) {
+    res.render('single-lost', { item: data });
+  });
 });
 
-router.get('/single-found', (req, res) => {
-  res.render('single-found');
+router.get('/single-found/:id', (req, res) => {
+  const { id } = req.params;
+  Item.findById(id).then(function(data) {
+    res.render('single-found', { item: data });
+  });
 });
 
 router.post('/single-found', (req, res) => {
-  const { name, number } = req.body;
+  const { name, number, item_name } = req.body;
   let errors = [];
 
   if (!name || !number) {
@@ -248,7 +252,7 @@ router.post('/single-found', (req, res) => {
 
   if (number.length < 10) {
     errors.push({
-      msg: 'Password must be at least 10 characters'
+      msg: 'Phone Number must be at least 10 characters'
     });
   }
 
@@ -261,11 +265,12 @@ router.post('/single-found', (req, res) => {
   } else {
     const newClaim = new Claim({
       name,
-      number
+      number,
+      item_name
     });
     newClaim.save().then(user => {
       req.flash('success_msg', 'Your claim has been submitted');
-      res.redirect('/lost');
+      res.redirect('/found');
     });
   }
 });

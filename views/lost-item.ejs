@@ -1,180 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/lost-item.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vollkorn&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/lost-item.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Vollkorn&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
+  <body>
     <div class="container-fluid">
-        <nav class="navbar navbar-dark bg-dark">
-            <a href="/" class="btn btn-outline-info my-2 my-sm-0" type="button">Home</a>
+      <nav class="navbar navbar-dark bg-dark">
+        <a href="/" class="btn btn-outline-info my-2 my-sm-0" type="button"
+          >Home</a
+        >
 
+        <a class="navbar-brand">Lost And Found</a>
+        <form class="form-inline">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
+            Search
+          </button>
+          <a
+            href="/found"
+            class="btn btn-outline-info my-2 my-sm-0"
+            type="button"
+            >Found Items</a
+          >
+          <a
+            href="/lost-form"
+            class="btn btn-outline-info my-2 my-sm-0"
+            type="button"
+            >Lost form</a
+          >
+        </form>
+      </nav>
+      <br />
+      <%-include('./partials/messages')%>
 
-            <a class="navbar-brand">Lost And Found</a>
-            <form class="form-inline">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="heading">
+            Items that have been<span class="badge badge-light">Lost</span>
+          </h1>
+          <br />
+          <h2 class="subheading">
+            Recently Posted
+          </h2>
+        </div>
+      </div>
 
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-                <a href="/found" class="btn btn-outline-info my-2 my-sm-0" type="button">Found Items</a>
-                <a href="/lost-form" class="btn btn-outline-info my-2 my-sm-0" type="button">Lost form</a>
-
-            </form>
-        </nav>
-        <br>
-        <%-include('./partials/messages')%>
-
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1 class="heading">Items that have been<span class="badge badge-light">Lost</span></h1>
-                <br>
-                <h2 class="subheading">
-                    Recently Posted
-                </h2>
+      <div class="row" style="overflow:hidden">
+        <div class="col-md-3 text-center">
+          <a href="/single-lost/<%=items.id%>" type="button">
+            <%if (items.length>0){%> <%items.forEach(function(item){%>
+            <div class="card" style="width: 24rem;">
+              <img class="card-img-top" src=<%=item.image%> alt="Card image
+              cap">
+              <div class="card-body">
+                <h5 class="card-title"><%=item.name%></h5>
+                <p class="card-text"><%=item.about%></p>
+                <a href="/single-lost/<%=items.id%>" class="btn btn-info"
+                  >View Item</a
+                >
+              </div>
             </div>
-
+            <% })}%>
+          </a>
         </div>
+      </div>
 
-        <div class="row">
-            <div class="col-md-3 text-center"><a href="/single-lost" type="button">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/trippy.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Name Of The Item</h5>
-                            <p class="card-text">This place is for the description of an item, it can have the item
-                                type, color etc details over here.</p>
-                            <a href="/single-lost" class="btn btn-info">View Item</a>
-                        </div>
-                    </div>
-                </a></div>
-            <div class="col-md-3 text-center"><a href="/single-lost" type="button">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/trippy.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Name Of The Item</h5>
-                            <p class="card-text">This place is for the description of an item, it can have the item
-                                type, color etc details over here.</p>
-                            <a href="/single-lost" class="btn btn-info">View Item</a>
-                        </div>
-                    </div>
-                </a></div>
-            <div class="col-md-3 text-center"><a href="/single-lost" type="button">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/trippy.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Name Of The Item</h5>
-                            <p class="card-text">This place is for the description of an item, it can have the item
-                                type, color etc details over here.</p>
-                            <a href="/single-lost" class="btn btn-info">View Item</a>
-                        </div>
-                    </div>
-                </a></div>
-
-            <div class="col-md-3 text-center"><a href="/single-lost" type="button">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/trippy.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Name Of The Item</h5>
-                            <p class="card-text">This place is for the description of an item, it can have the item
-                                type, color etc details over here.</p>
-                            <a href="/single-lost" class="btn btn-info">View Item</a>
-                        </div>
-                    </div>
-                </a></div>
-
-            <div class="col-md-3 text-center"><a href="/single-lost" type="button">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/trippy.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Name Of The Item</h5>
-                            <p class="card-text">This place is for the description of an item, it can have the item
-                                type, color etc details over here.</p>
-                            <a href="/single-lost" class="btn btn-info">View Item</a>
-                        </div>
-                    </div>
-                </a></div>
-            <div class="col-md-3 text-center"><a href="/single-lost" type="button">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/trippy.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Name Of The Item</h5>
-                            <p class="card-text">This place is for the description of an item, it can have the item
-                                type, color etc details over here.</p>
-                            <a href="/single-lost" class="btn btn-info">View Item</a>
-                        </div>
-                    </div>
-                </a></div>
-            <div class="col-md-3 text-center"><a href="/single-lost" type="button">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/trippy.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Name Of The Item</h5>
-                            <p class="card-text">This place is for the description of an item, it can have the item
-                                type, color etc details over here.</p>
-                            <a href="/single-lost" class="btn btn-info">View Item</a>
-                        </div>
-                    </div>
-                </a></div>
-
-            <div class="col-md-3 text-center"><a href="/single-lost" type="button">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/trippy.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Name Of The Item</h5>
-                            <p class="card-text">This place is for the description of an item, it can have the item
-                                type, color etc details over here.</p>
-                            <a href="/single-lost" class="btn btn-info">View Item</a>
-                        </div>
-                    </div>
-                </a></div>
-
-
-
-
-
-
+      <br />
+      <div class="row">
+        <div class="col-md-12">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+                  >Previous</a
+                >
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
         </div>
-
-
-
-        <br>
-        <div class="row">
-            <div class="col-md-12">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
-
+      </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-</body>
-
+  </body>
 </html>

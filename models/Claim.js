@@ -13,12 +13,8 @@ const ClaimSchema = new mongoose.Schema({
     type: Date,
     default: new Date()
   },
-  username: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  about: {
-    type: mongoose.Schema.Types.ObjectId,
+  item_name: {
+    type: 'string',
     ref: 'Item'
   }
 });
