@@ -9,13 +9,19 @@ const ClaimSchema = new mongoose.Schema({
     type: 'number',
     required: true
   },
+  item_name: {
+    type: 'string',
+    required: true,
+    ref: 'Item'
+  },
+  item_about: {
+    type: 'string',
+    required: true,
+    ref: 'Item'
+  },
   date: {
     type: Date,
     default: new Date()
-  },
-  item_name: {
-    type: 'string',
-    ref: 'Item'
   }
 });
 

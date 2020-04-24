@@ -228,7 +228,7 @@ router.get('/lost', (req, res) => {
 
 router.get('/single-lost/:id', (req, res) => {
   const { id } = req.params;
-  Item.findByIed(id).then(function(data) {
+  Item.findById(id).then(function(data) {
     res.render('single-lost', { item: data });
   });
 });
@@ -240,10 +240,13 @@ router.get('/single-found/:id', (req, res) => {
   });
 });
 
-router.post('/single-found', (req, res) => {
-  const { name, number, item_name } = req.body;
+router.post('/single-found/:id', (req, res) => {
+  const { name, number, item_name, item_about } = req.body;
+  const { id } = req.params;
+  Item.findById(id).then(function(data) {
+    res.render('single-found', { item: data });
+  });
   let errors = [];
-
   if (!name || !number) {
     errors.push({
       msg: 'Please enter all fields'
@@ -266,7 +269,8 @@ router.post('/single-found', (req, res) => {
     const newClaim = new Claim({
       name,
       number,
-      item_name
+      item_name,
+      item_about
     });
     newClaim.save().then(user => {
       req.flash('success_msg', 'Your claim has been submitted');

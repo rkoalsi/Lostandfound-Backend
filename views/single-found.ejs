@@ -18,17 +18,18 @@
       <a href="/" class="btn btn-outline-info my-2 my-sm-0" type="submit">Home</a>
       <a href="/found-form" class="btn btn-outline-info my-2 my-sm-0" type="submit">Found Form</a>
       <a href="/register" class="btn btn-outline-info my-2 my-sm-0" type="submit">Contact Us</a>
-    </form>
+      </form>
   </nav>
   <h1>Found Item</h1>
             <br>
+            <form action="/single-found/:id" method="POST">
             <div class="row">
                 <div class="col-md-2"></div>
                   <div class="card mb-3">
                     <img class="card-img-top" src=<%=item.image%> alt="Card image cap">
                     <div class="card-body">
-                      <input type='hidden' name='item_name' value="<%=typeof item_name != 'undefined' ? item_name : item.name %>"/><h5 class="card-title"><%=item.name%></h5>
-                      <p class="card-text"><%=item.about%></p>
+                      <input type="hidden" name="item_name" value="<%= typeof item_name != 'undefined' ? item_name : item.name%>"/><h5 class="card-title"><%=item.name%></h5>
+                      <input type="hidden" name="item_about" value="<%= typeof item_about != 'undefined' ? item_about : item.about%>"/><p class="card-text"><%=item.about%></p>
                       <p class="card-text"><%=item.type%></p>
                       <p class="card-text"><%=item.where%></p>
                       <!-- <p class="card-text"><small class="text-muted">Last updated 29 mins ago</small></p> -->
@@ -43,7 +44,7 @@
                     <p class="claim_text">If the item shown above is your's then fill the form below to claim it</p>
                     <br>
                     <%-include('./partials/messages')%>
-                <form action="/single-found/:id" method="POST">
+
                     <div class='claim_info_name'>
                       <label for="claim_name">Name</label>
                       <input type="name" name="name" class="form-control" id="name"
@@ -62,10 +63,8 @@
                           <div class="col-md-2"></div>
                     <button type="submit" class="claim_btn">CLAIM!</button>
             </div>
-            <div class="empty"></div>
-            </div>
-            <div class="end_txt"></div>
           </form>
+          
 
  
 
