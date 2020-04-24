@@ -232,6 +232,45 @@ router.get('/single-lost/:id', (req, res) => {
     res.render('single-lost', { item: data });
   });
 });
+router.post('/single-lost/:id', (req, res) => {
+  const { name, number, item_name, item_about, item_id } = req.body;
+  const { id } = req.params;
+  Item.findById(id).then(function(data) {
+    res.render('single-lost', { item: data });
+  });
+  let errors = [];
+  if (!name || !number) {
+    errors.push({
+      msg: 'Please enter all fields'
+    });
+  }
+
+  if (number.length < 10) {
+    errors.push({
+      msg: 'Phone Number must be at least 10 characters'
+    });
+  }
+
+  if (errors.length > 0) {
+    res.render('single-found', {
+      errors,
+      name,
+      number
+    });
+  } else {
+    const newClaim = new Claim({
+      name,
+      number,
+      item_name,
+      item_about,
+      item_id
+    });
+    newClaim.save().then(user => {
+      req.flash('success_msg', 'Your claim has been submitted');
+      res.redirect('/lost');
+    });
+  }
+});
 
 router.get('/single-found/:id', (req, res) => {
   const { id } = req.params;
@@ -241,7 +280,7 @@ router.get('/single-found/:id', (req, res) => {
 });
 
 router.post('/single-found/:id', (req, res) => {
-  const { name, number, item_name, item_about } = req.body;
+  const { name, number, item_name, item_about, item_id } = req.body;
   const { id } = req.params;
   Item.findById(id).then(function(data) {
     res.render('single-found', { item: data });
@@ -270,7 +309,8 @@ router.post('/single-found/:id', (req, res) => {
       name,
       number,
       item_name,
-      item_about
+      item_about,
+      item_id
     });
     newClaim.save().then(user => {
       req.flash('success_msg', 'Your claim has been submitted');

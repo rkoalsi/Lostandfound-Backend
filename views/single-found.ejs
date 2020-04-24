@@ -30,6 +30,7 @@
                     <div class="card-body">
                       <input type="hidden" name="item_name" value="<%= typeof item_name != 'undefined' ? item_name : item.name%>"/><h5 class="card-title"><%=item.name%></h5>
                       <input type="hidden" name="item_about" value="<%= typeof item_about != 'undefined' ? item_about : item.about%>"/><p class="card-text"><%=item.about%></p>
+                      <input type="hidden" name="item_id" value="<%= typeof item_id != 'undefined' ? item_id : item.id%>"/>
                       <p class="card-text"><%=item.type%></p>
                       <p class="card-text"><%=item.where%></p>
                       <!-- <p class="card-text"><small class="text-muted">Last updated 29 mins ago</small></p> -->

@@ -19,6 +19,11 @@ const ClaimSchema = new mongoose.Schema({
     required: true,
     ref: 'Item'
   },
+  item_id: {
+    type: 'string',
+    required: true,
+    ref: 'Item'
+  },
   date: {
     type: Date,
     default: new Date()
