@@ -43,7 +43,8 @@ body {
 }
 
 .card {
-  width: 80%;
+  max-width: 350px;
+  max-height: 350px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f0e68c;
@@ -59,4 +60,9 @@ body {
 
 .card-title {
   color: darkblue;
+}
+
+.card-img-top {
+  max-width: 300px;
+  max-height: 300px;
 }

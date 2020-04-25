@@ -1,57 +1,50 @@
 body {
-  background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(39,116,184,1) 0%);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(39, 116, 184, 1) 0%
+  );
 }
-
-
 
 /* NAVBAR */
 .navbar-brand {
   display: inline-block;
-  padding-top: .3125rem;
-  padding-bottom: .3125rem;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
   margin-right: 1rem;
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
-  font-family: 'IM Fell French Canon SC', serif; 
+  font-family: 'IM Fell French Canon SC', serif;
   /* margin-left: 380px; */
 }
 
 /* NAVBAR BUTTON */
 .btn {
-margin-right: 5px;
+  margin-right: 5px;
 }
 
 /* PAGE HEADING */
-.heading{
-/* text-align: center; */
-font-size: 2.1rem;
-font-family: 'Abel', sans-serif;
+.heading {
+  /* text-align: center; */
+  font-size: 2.1rem;
+  font-family: 'Abel', sans-serif;
 }
-
 
 .badge-secondary {
-color: #fff;
-background-color: black;
+  color: #fff;
+  background-color: black;
 }
 
-.subheading{
+.subheading {
   text-shadow: 2px 2px 5px lightgrey;
   font-family: 'Vollkorn', serif;
 }
-
-
-
-
 .card {
-    
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    
+  max-width: 350px;
+  max-height: 350px;
 }
-
 .card-text {
   color: cornflowerblue;
 }
@@ -59,4 +52,7 @@ background-color: black;
 .card-title {
   color: darkblue;
 }
-  
+.card-img-top {
+  max-width: 350px;
+  max-height: 350px;
+}

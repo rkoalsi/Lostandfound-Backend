@@ -67,8 +67,8 @@
         </div>
       </div>
       <div class="row" style="overflow:hidden">
+        <%if (items.length>0){%> <%items.forEach(function(item){%>
         <div class="col-md-3 text-center">
-          <%if (items.length>0){%> <%items.forEach(function(item){%>
           <div class="card" style="width: 24rem;">
             <img class="card-img-top" src=<%=item.image%> alt="Card image cap">
             <div class="card-body">
@@ -79,8 +79,8 @@
               >
             </div>
           </div>
-          <% })}%>
         </div>
+        <% })}%>
       </div>
 
       <br />
