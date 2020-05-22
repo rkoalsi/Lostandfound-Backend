@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prod": "pm2 start ./index.js",
     "start": "nodemon ."
   },
   "keywords": [],
