@@ -217,6 +217,20 @@ router.get('/found', (req, res) => {
     if (err) throw err;
     res.render('found-item', { items: data });
   });
+  let { search } = req.query;
+  function capitalLetters(str) {
+    str = str.split(' ');
+    for (var i = 0, x = str.length; i < x; i++) {
+      str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+    }
+    return str.join(' ');
+  }
+  search2 = capitalLetters(search);
+  await Item.find({ name: search2, status: false }, function (err, data) {
+    console.log(data);
+    if (err) throw err;
+    res.render('found-item', { items: data });
+  });
 });
 
 router.get('/lost', async (req, res) => {
