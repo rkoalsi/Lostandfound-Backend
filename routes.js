@@ -10,7 +10,7 @@ const { forwardAuthenticated, ensureAuthenticated } = require('./config/auth');
 const multer = require('multer');
 const storage = multer.memoryStorage();
 const upload = multer({
-  storage: storage
+  storage: storage,
 });
 
 router.get('/', (req, res) => {
@@ -30,7 +30,7 @@ router.post('/found-form', upload.single('image'), (req, res) => {
   let errors = [];
   if (!name || !type || !about || !where) {
     errors.push({
-      msg: 'Please enter all fields'
+      msg: 'Please enter all fields',
     });
   }
   if (errors.length > 0) {
@@ -40,7 +40,7 @@ router.post('/found-form', upload.single('image'), (req, res) => {
       type,
       about,
       image,
-      where
+      where,
     });
   } else {
     const newItem = new Item({
@@ -50,14 +50,14 @@ router.post('/found-form', upload.single('image'), (req, res) => {
       where,
       image,
       status,
-      completed
+      completed,
     });
-    newItem.save().then(user => {
+    newItem.save().then((user) => {
       const name = newItem._id.toString() + '.jpg';
       const url = getReadUrl(name);
       uploadBuffer(req.file.buffer, {
-        name
-      }).then(resUpload => {
+        name,
+      }).then((resUpload) => {
         user.image = url;
         user.save();
       });
@@ -80,7 +80,7 @@ router.post('/lost-form', upload.single('image'), (req, res) => {
 
   if (!name || !type || !about || !where) {
     errors.push({
-      msg: 'Please enter all fields'
+      msg: 'Please enter all fields',
     });
   }
   if (errors.length > 0) {
@@ -90,7 +90,7 @@ router.post('/lost-form', upload.single('image'), (req, res) => {
       type,
       image,
       about,
-      where
+      where,
     });
   } else {
     const newItem = new Item({
@@ -100,14 +100,14 @@ router.post('/lost-form', upload.single('image'), (req, res) => {
       where,
       image,
       status,
-      completed
+      completed,
     });
-    newItem.save().then(user => {
+    newItem.save().then((user) => {
       const name = newItem._id.toString() + '.jpg';
       const url = getReadUrl(name);
       uploadBuffer(req.file.buffer, {
-        name
-      }).then(resUpload => {
+        name,
+      }).then((resUpload) => {
         user.image = url;
         user.save();
       });
@@ -127,19 +127,19 @@ router.post('/register', (req, res) => {
 
   if (!name || !email || !password || !password2) {
     errors.push({
-      msg: 'Please enter all fields'
+      msg: 'Please enter all fields',
     });
   }
 
   if (password != password2) {
     errors.push({
-      msg: 'Passwords do not match'
+      msg: 'Passwords do not match',
     });
   }
 
   if (password.length < 6) {
     errors.push({
-      msg: 'Password must be at least 6 characters'
+      msg: 'Password must be at least 6 characters',
     });
   }
 
@@ -149,28 +149,28 @@ router.post('/register', (req, res) => {
       name,
       email,
       password,
-      password2
+      password2,
     });
   } else {
     User.findOne({
-      email: email
-    }).then(user => {
+      email: email,
+    }).then((user) => {
       if (user) {
         errors.push({
-          msg: 'Email already exists'
+          msg: 'Email already exists',
         });
         res.render('register', {
           errors,
           name,
           email,
           password,
-          password2
+          password2,
         });
       } else {
         const newUser = new User({
           name,
           email,
-          password
+          password,
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -179,14 +179,14 @@ router.post('/register', (req, res) => {
             newUser.password = hash;
             newUser
               .save()
-              .then(user => {
+              .then((user) => {
                 req.flash(
                   'success_msg',
                   'You are now registered and can log in'
                 );
                 res.redirect('/login');
               })
-              .catch(err => console.log(err));
+              .catch((err) => console.log(err));
           });
         });
       }
@@ -202,7 +202,7 @@ router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
-    failureFlash: true
+    failureFlash: true,
   })(req, res, next);
 });
 
@@ -213,14 +213,28 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/found', (req, res) => {
-  Item.find({ status: 'true' }, function(err, data) {
+  Item.find({ status: 'true' }, function (err, data) {
     if (err) throw err;
     res.render('found-item', { items: data });
   });
 });
 
-router.get('/lost', (req, res) => {
-  Item.find({ status: 'false' }, function(err, data) {
+router.get('/lost', async (req, res) => {
+  await Item.find({ status: 'false' }, function (err, data) {
+    if (err) throw err;
+    res.render('lost-item', { items: data });
+  });
+  let { search } = req.query;
+  function capitalLetters(str) {
+    str = str.split(' ');
+    for (var i = 0, x = str.length; i < x; i++) {
+      str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+    }
+    return str.join(' ');
+  }
+  search2 = capitalLetters(search);
+  await Item.find({ name: search2, status: false }, function (err, data) {
+    console.log(data);
     if (err) throw err;
     res.render('lost-item', { items: data });
   });
@@ -228,7 +242,7 @@ router.get('/lost', (req, res) => {
 
 router.get('/single-lost/:id', (req, res) => {
   const { id } = req.params;
-  Item.findById(id).then(function(data) {
+  Item.findById(id).then(function (data) {
     res.render('single-lost', { item: data });
   });
 });
@@ -241,13 +255,13 @@ router.post('/single-lost/:id', (req, res) => {
   let errors = [];
   if (!name || !number) {
     errors.push({
-      msg: 'Please enter all fields'
+      msg: 'Please enter all fields',
     });
   }
 
   if (number.length < 10) {
     errors.push({
-      msg: 'Phone Number must be at least 10 characters'
+      msg: 'Phone Number must be at least 10 characters',
     });
   }
 
@@ -255,7 +269,7 @@ router.post('/single-lost/:id', (req, res) => {
     res.render('single-found', {
       errors,
       name,
-      number
+      number,
     });
   } else {
     const newClaim = new Claim({
@@ -263,9 +277,9 @@ router.post('/single-lost/:id', (req, res) => {
       number,
       item_name,
       item_about,
-      item_id
+      item_id,
     });
-    newClaim.save().then(user => {
+    newClaim.save().then((user) => {
       req.flash('success_msg', 'Your claim has been submitted');
       res.redirect('/lost');
     });
@@ -274,7 +288,7 @@ router.post('/single-lost/:id', (req, res) => {
 
 router.get('/single-found/:id', (req, res) => {
   const { id } = req.params;
-  Item.findById(id).then(function(data) {
+  Item.findById(id).then(function (data) {
     res.render('single-found', { item: data });
   });
 });
@@ -288,13 +302,13 @@ router.post('/single-found/:id', (req, res) => {
   let errors = [];
   if (!name || !number) {
     errors.push({
-      msg: 'Please enter all fields'
+      msg: 'Please enter all fields',
     });
   }
 
   if (number.length < 10) {
     errors.push({
-      msg: 'Phone Number must be at least 10 characters'
+      msg: 'Phone Number must be at least 10 characters',
     });
   }
 
@@ -302,7 +316,7 @@ router.post('/single-found/:id', (req, res) => {
     res.render('single-found', {
       errors,
       name,
-      number
+      number,
     });
   } else {
     const newClaim = new Claim({
@@ -310,9 +324,9 @@ router.post('/single-found/:id', (req, res) => {
       number,
       item_name,
       item_about,
-      item_id
+      item_id,
     });
-    newClaim.save().then(user => {
+    newClaim.save().then((user) => {
       req.flash('success_msg', 'Your claim has been submitted');
       res.redirect('/found');
     });

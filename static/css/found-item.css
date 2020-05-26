@@ -43,7 +43,10 @@ body {
 }
 .card {
   max-width: 350px;
-  max-height: 350px;
+  max-height: 375px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f0e68c;
 }
 .card-text {
   color: cornflowerblue;
@@ -53,6 +56,6 @@ body {
   color: darkblue;
 }
 .card-img-top {
-  max-width: 350px;
-  max-height: 350px;
+  max-width: 300px;
+  max-height: 300px;
 }

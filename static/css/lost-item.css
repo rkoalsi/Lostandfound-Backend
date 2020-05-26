@@ -44,14 +44,10 @@ body {
 
 .card {
   max-width: 350px;
-  max-height: 350px;
-  margin: 0 auto;
+  max-height: 375px;
+  margin: auto;
   padding: 20px;
-  background-color: #f0e68c;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  float: left;
+  background-color: #69621c;
 }
 
 .card-text {
@@ -64,5 +60,5 @@ body {
 
 .card-img-top {
   max-width: 300px;
-  max-height: 300px;
+  max-height: 200px;
 }
