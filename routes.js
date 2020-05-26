@@ -213,42 +213,22 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/found', (req, res) => {
-  Item.find({ status: 'true' }, function (err, data) {
-    if (err) throw err;
-    res.render('found-item', { items: data });
+  let { search = '' } = req.query;
+  let search2 = search.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
-  let { search } = req.query;
-  function capitalLetters(str) {
-    str = str.split(' ');
-    for (var i = 0, x = str.length; i < x; i++) {
-      str[i] = str[i][0].toUpperCase() + str[i].substr(1);
-    }
-    return str.join(' ');
-  }
-  search2 = capitalLetters(search);
-  await Item.find({ name: search2, status: false }, function (err, data) {
-    console.log(data);
+  Item.find({ name: search2, status: true }, function (err, data) {
     if (err) throw err;
     res.render('found-item', { items: data });
   });
 });
 
-router.get('/lost', async (req, res) => {
-  await Item.find({ status: 'false' }, function (err, data) {
-    if (err) throw err;
-    res.render('lost-item', { items: data });
+router.get('/lost', (req, res) => {
+  let { search = '' } = req.query;
+  let search2 = search.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
-  let { search } = req.query;
-  function capitalLetters(str) {
-    str = str.split(' ');
-    for (var i = 0, x = str.length; i < x; i++) {
-      str[i] = str[i][0].toUpperCase() + str[i].substr(1);
-    }
-    return str.join(' ');
-  }
-  search2 = capitalLetters(search);
-  await Item.find({ name: search2, status: false }, function (err, data) {
-    console.log(data);
+  Item.find({ name: search2, status: false }, function (err, data) {
     if (err) throw err;
     res.render('lost-item', { items: data });
   });
