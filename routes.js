@@ -285,10 +285,6 @@ router.get('/single-found/:id', (req, res) => {
 
 router.post('/single-found/:id', (req, res) => {
   const { name, number, item_name, item_about, item_id } = req.body;
-  // const { id } = req.params;
-  // Item.findById(id).then(function(data) {
-  //   res.render('single-found', { item: data });
-  // });
   let errors = [];
   if (!name || !number) {
     errors.push({
