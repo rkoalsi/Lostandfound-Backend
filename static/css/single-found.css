@@ -23,14 +23,17 @@
 .card {
   margin-left: auto;
   margin-right: auto;
-  
-  
-}
+  }
 
 h1 {
  text-align: center;
  font-family: 'Vollkorn', serif;
  color: #ffffff;
+}
+
+h3{
+  font-family: 'Vollkorn', serif;
+  color: white;
 }
 /* NAVBAR BUTTON  */
 .btn {
@@ -70,8 +73,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,241,241,1) 0%);
   height: 50px;
   width: 90px;
   font-family: 'Montserrat', sans-serif;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 800px;
+
   
 }
 .claim_btn:hover{
@@ -92,5 +95,5 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,241,241,1) 0%);
 
 }
 .empty{
-  height: 50px;
+  height: 200px;
 }
