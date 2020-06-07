@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
 router.use('/', express.static('./static'));
 
-router.get('/found-form', (req, res) => {
+router.get('/found-form', ensureAuthenticated, (req, res) => {
   res.render('found-form');
 });
 
@@ -67,7 +67,7 @@ router.post('/found-form', upload.single('image'), (req, res) => {
   }
 });
 
-router.get('/lost-form', (req, res) => {
+router.get('/lost-form', ensureAuthenticated, (req, res) => {
   res.render('lost-form');
 });
 
@@ -212,7 +212,7 @@ router.get('/logout', (req, res) => {
   res.redirect('/login');
 });
 
-router.get('/found', (req, res) => {
+router.get('/found', ensureAuthenticated, (req, res) => {
   let { search = '' } = req.query;
   let search2 = search.replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -223,7 +223,7 @@ router.get('/found', (req, res) => {
   });
 });
 
-router.get('/lost', (req, res) => {
+router.get('/lost', ensureAuthenticated, (req, res) => {
   let { search = '' } = req.query;
   let search2 = search.replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -234,7 +234,7 @@ router.get('/lost', (req, res) => {
   });
 });
 
-router.get('/single-lost/:id', (req, res) => {
+router.get('/single-lost/:id', ensureAuthenticated, (req, res) => {
   const { id } = req.params;
   Item.findById(id).then(function (data) {
     res.render('single-lost', { item: data });
@@ -276,7 +276,7 @@ router.post('/single-lost/:id', (req, res) => {
   }
 });
 
-router.get('/single-found/:id', (req, res) => {
+router.get('/single-found/:id', ensureAuthenticated, (req, res) => {
   const { id } = req.params;
   Item.findById(id).then(function (data) {
     res.render('single-found', { item: data });

@@ -23,11 +23,22 @@
   <body>
     
       <nav class="navbar navbar-dark bg-dark">
-        <a href="/" class="btn btn-outline-info my-2 my-sm-0" type="button"
-          >Home</a
+    
+        <a href='/' class="navbar-brand">Lost And Found</a>
+          <a
+          href="/Lost"
+          style="margin-left: 670px;"
+          class="btn btn-outline-info my-2 my-sm-0"
+          type="button"
+          >Lost Items</a
         >
-
-        <a class="navbar-brand">Lost And Found</a>
+        <a
+          href="/found-form"
+          style="position: left;"
+          class="btn btn-outline-info my-2 my-sm-0"
+          type="button"
+          >Found Form</a
+        >
         <form class="form-inline">
           <input
           name="search"
@@ -39,19 +50,14 @@
           <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
             Search
           </button>
-          <a
-            href="/Lost"
-            class="btn btn-outline-info my-2 my-sm-0"
-            type="button"
-            >Lost Items</a
-          >
-          <a
-            href="/found-form"
-            class="btn btn-outline-info my-2 my-sm-0"
-            type="button"
-            >Found Form</a
-          >
         </form>
+        <a
+          href="/logout"
+          class="btn btn-outline-info my-2 my-sm-0"
+          type="button"
+          >Logout</a
+          >
+   
       </nav>
       <br />
       <%-include('./partials/messages')%>

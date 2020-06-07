@@ -12,18 +12,35 @@
 
 <body class="Lost_Form">
   <div class="container-fluid">
-    <nav class="navbar navbar-dark bg-dark">
-    <a class=" navbar-brand">Lost and Found</a>
-    <form class="form-inline">
-      <a href="/" class="btn btn-outline-info my-2 my-sm-0" type="submit">Home</a>
-      <a href="/found-form" class="btn btn-outline-info my-2 my-sm-0" type="submit">Found Form</a>
-      <a href="/register" class="btn btn-outline-info my-2 my-sm-0" type="submit">Contact Us</a>
-      </form>
-  </nav>
+    <nav style="" class="navbar navbar-dark bg-dark">
+    
+      <a href='/' class="navbar-brand">Lost And Found</a>
+        <a
+        href="/Lost"
+        style="margin-left: 770px;"
+        class="btn btn-outline-info my-2 my-sm-0"
+        type="button"
+        >Lost Items</a
+      >
+      <a
+        href="/found-form"
+        style="position: left;"
+        class="btn btn-outline-info my-2 my-sm-0"
+        type="button"
+        >Found Form</a
+        >
+      <a
+        href="/logout"
+        class="btn btn-outline-info my-2 my-sm-0"
+        type="button"
+        >Logout</a
+        >
+ 
+    </nav>
   <h1>Found Item</h1>
             <br>
             <form action="/single-found/:id" method="POST">
-            <div class="row">
+            <div class="row" style= "margin-right:160px; text-align:center">
                 <div class="col-md-2"></div>
                   <div class="card mb-3">
                     <img class="card-img-top" src=<%=item.image%> alt="Card image cap">
@@ -34,26 +51,23 @@
                       <p class="card-text"><%=item.type%></p>
                       <p class="card-text"><%=item.where%></p>
                       <!-- <p class="card-text"><small class="text-muted">Last updated 29 mins ago</small></p> -->
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-muted">Mohammed Hamdan</li>
-                        <li class="list-group-item text-muted">+918879093154</li>
-                        <li class="list-group-item text-muted">hamdan@airpods.com</li>
-                      </ul>
+
                     </div>
                   </div>
                 </div>
+                <div style="align-items: center; text-align: center; justify-content: center;">
                     <p class="claim_text">If the item shown above is your's then fill the form below to claim it</p>
                     <br>
                     <%-include('./partials/messages')%>
 
                     <div class='claim_info_name'>
-                      <label for="claim_name">Name</label>
+                      <h3 for="claim_name">Name</h3>
                       <input type="name" name="name" class="form-control" id="name"
                       value="<%= typeof name != 'undefined' ? name : '' %>" />
                       </div>
                       <br>
                       <div class="claim_info_number">
-                      <label for="claim_number">Mobile No.</label>
+                      <h3 for="claim_number">Mobile No.</h3>
                       <input type="number" name="number" class="form-control" id="number"
                       value="<%= typeof number != 'undefined' ? number : '' %>" />
               
@@ -61,8 +75,13 @@
               
                     
                       </div>
-                          <div class="col-md-2"></div>
-                    <button type="submit" class="claim_btn">CLAIM!</button>
+                          <div class="col-md-2">
+                    <button type="submit" style=" margin: 0;
+                    position: absolute;
+                    left: 650;
+                   " class="claim_btn">CLAIM!</button>
+                    </div>
+                  </div>
             </div>
           </form>
           
