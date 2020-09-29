@@ -1,0 +1,12 @@
+.card{
+    display: flex;
+    flex:1;
+}
+.card-body{
+    display: flex;
+    flex:1;
+}
+
+.card-img-top{
+    width:100%;
+}

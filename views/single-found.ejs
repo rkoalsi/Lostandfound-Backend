@@ -40,16 +40,16 @@
   <h1>Found Item</h1>
             <br>
             <form action="/single-found/:id" method="POST">
-            <div class="row" style= "margin-right:160px; text-align:center">
+            <div class="row" style= "text-align:center; align-items: center; justify-content: center;" >
                 <div class="col-md-2"></div>
                   <div class="card mb-3">
                     <img class="card-img-top" src=<%=item.image%> alt="Card image cap">
                     <div class="card-body">
-                      <input type="hidden" name="item_name" value="<%= typeof item_name != 'undefined' ? item_name : item.name%>"/><h5 class="card-title"><%=item.name%></h5>
-                      <input type="hidden" name="item_about" value="<%= typeof item_about != 'undefined' ? item_about : item.about%>"/><p class="card-text"><%=item.about%></p>
+                      <input type="hidden" name="item_name" value="<%= typeof item_name != 'undefined' ? item_name : item.name%>"/><h5 class="card-title">Item name: <%=item.name%></h5>
+                      <input type="hidden" name="item_about" value="<%= typeof item_about != 'undefined' ? item_about : item.about%>"/><p class="card-text">Item Description: <%=item.about%></p>
                       <input type="hidden" name="item_id" value="<%= typeof item_id != 'undefined' ? item_id : item.id%>"/>
-                      <p class="card-text"><%=item.type%></p>
-                      <p class="card-text"><%=item.where%></p>
+                      <p class="card-text">Type of Item: <%=item.type%></p>
+                      <p class="card-text">Where Item was Found: <%=item.where%></p>
                       <!-- <p class="card-text"><small class="text-muted">Last updated 29 mins ago</small></p> -->
 
                     </div>
@@ -60,29 +60,19 @@
                     <br>
                     <%-include('./partials/messages')%>
 
-                    <div class='claim_info_name'>
+                    <div class='claim_info_name' style="width: 20%; margin-left: 578px;">
                       <h3 for="claim_name">Name</h3>
-                      <input type="name" name="name" class="form-control" id="name"
+                      <input type="name" name="name" class="form-control" id="name" 
                       value="<%= typeof name != 'undefined' ? name : '' %>" />
                       </div>
                       <br>
-                      <div class="claim_info_number">
+                      <div class="claim_info_number" style="width: 20%; margin-left: 578px;">
                       <h3 for="claim_number">Mobile No.</h3>
                       <input type="number" name="number" class="form-control" id="number"
                       value="<%= typeof number != 'undefined' ? number : '' %>" />
-              
                       </div>
-              
-                    
                       </div>
-                      <br>
-                      <br>
-                          <div class="col-md-2">
-                    <button type="submit" style=" margin: 0;
-                    position: absolute;
-                    left: 650;
-                   " class="claim_btn">CLAIM!</button>
-                    </div>
+                        <button type="submit" style='width: 20%; margin-left:578px;' class="claim_btn">CLAIM!</button>
                   </div>
             </div>
           </form>

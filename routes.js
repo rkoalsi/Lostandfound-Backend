@@ -217,10 +217,16 @@ router.get('/found', ensureAuthenticated, (req, res) => {
   let search2 = search.replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
-  Item.find({ name: search2, status: true }, function (err, data) {
-    if (err) throw err;
-    res.render('found-item', { items: data });
-  });
+  if(search!==''){
+    Item.find({ name: search2, status: true }, function (err, data) {
+      if (err) throw err;
+      res.render('found-item', { items: data });
+    });
+  } else{
+    Item.find({status:true}, function(err,data){
+      res.render('found-item', {items:data});
+    })
+  }
 });
 
 router.get('/lost', ensureAuthenticated, (req, res) => {
@@ -228,10 +234,16 @@ router.get('/lost', ensureAuthenticated, (req, res) => {
   let search2 = search.replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
-  Item.find({ name: search2, status: false }, function (err, data) {
-    if (err) throw err;
-    res.render('lost-item', { items: data });
-  });
+  if(search!==''){
+    Item.find({ name: search2, status: false }, function (err, data) {
+      if (err) throw err;
+      res.render('lost-item', { items: data });
+    });
+  } else{
+    Item.find({status:false}, function(err,data){
+      res.render('lost-item', {items:data});
+    })
+  }
 });
 
 router.get('/single-lost/:id', ensureAuthenticated, (req, res) => {
